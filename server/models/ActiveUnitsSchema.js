@@ -1,7 +1,7 @@
-let mongoose = require('mongoose');
-let Schema = mongoose.Schema;
+var mongoose = require('mongoose');
+var Schema = mongoose.Schema;
 
-let Data = new Schema(
+var Data = new Schema(
 {
     waterTemp: { type: Number, required: true },
     airTemp: { type: Number, required: true },
@@ -9,17 +9,17 @@ let Data = new Schema(
     light: { type: Number, require: true }
 });
 
-let Hour = new Schema(
+var Hour = new Schema(
 {
     data: [ Data ]
 });
 
-let Day = new Schema(
+var Day = new Schema(
 {
     hour: [ Hour ]
 });
 
-let Units = new Schema(
+var Units = new Schema(
 {
     name: { type: String, required: true },
     product: { type: String, required: true },
@@ -28,7 +28,11 @@ let Units = new Schema(
         startTime: { type: Date, default: Date.now }
     }, 
 
-    day: [ Day ]
+    day: [{
+            hour: [{
+                     Data
+                  }]
+         }]
 });
 
 var ActiveUnits = new Schema(
