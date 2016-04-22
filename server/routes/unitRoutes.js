@@ -1,3 +1,5 @@
+'use strict';
+
 let unit = require('../ctrl'),
     ActiveUnits = require('../models/ActiveUnitsSchema');
 
@@ -5,7 +7,10 @@ let unit = require('../ctrl'),
 module.exports = function( app ) {
     
     app.route(`/api/unit/:unitId`)
-        .get(unit.getUnit)
+        .get( ( req, res ) => {
+            console.log(req.params);
+            res.send()
+        })
         
         .post(function ( Unit ) {
             console.log( "CREATING UNIT" );
