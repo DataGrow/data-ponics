@@ -28,8 +28,6 @@ module.exports = wss;
 require("./server/websockets.js");
 
 
-require("./server/ctrl.js");
-
 require("./server/routes/unitRoutes")(app);
 
 

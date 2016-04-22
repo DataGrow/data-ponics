@@ -1,3 +1,7 @@
+'use strict';
+
+let mongoose = require('mongoose');
+
 let Schema = mongoose.Schema;
 
 let Data = new Schema(
@@ -16,7 +20,7 @@ let ArchivedUnit = new Schema(
     product: { type: String, required: true },
     harvest: {
         id: { type: Number, required: true},
-        startTime: { type: Date }
+        startTime: { type: Date },
         endTime: { type: Date, default: Date.now }
     }, 
 

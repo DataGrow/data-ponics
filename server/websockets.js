@@ -3,7 +3,6 @@
 
 
 let wss = require("../server.js"),
-    ActiveUnits = require("./models/ActiveUnitsSchema.js"),
     UnitClass = require("./UnitClass.js");
 
 
