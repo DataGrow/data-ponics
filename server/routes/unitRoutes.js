@@ -1,8 +1,8 @@
-let unitCtrl = require('./../../development/js/controllers/unitCtrl.js');
+let unitCtrl = require('./unitCtrl');
 
 module.exports = function( app ) {
     
     app.route(`/api/Unit`)
-    
+        .get(unitCtrl.getActiveUnits)
     
 };
