@@ -5,6 +5,9 @@ body {
   font-family: "Raleway", Frutiger, "Frutiger Linotype", Univers, Calibri, "Gill Sans", "Gill Sans MT", "Myriad Pro", Myriad, "DejaVu Sans Condensed", "Liberation Sans", "Nimbus Sans L", Tahoma, Geneva, "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 
+* {
+  box-sizing:border-box;
+}
 
 /*SIDEBAR*/
 
@@ -127,8 +130,28 @@ body {
 }
 
 /*make menu-toggle visible on small screens*/
+#menu-toggle {
+  display:none;
+}
+
 @media(max-width:768px) {
   #menu-toggle {
     display:inline-block;
   }
+}
+
+/*ACTIVE UNITS VIEW*/
+
+.unit-contain {
+  padding-left:0;
+  padding-right:0;
+}
+
+.unit-wrapper {
+  padding:15px;
+}
+
+.unit-content {
+  border: 1px solid black;
+  height:300px;
 }
