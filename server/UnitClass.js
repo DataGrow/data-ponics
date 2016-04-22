@@ -1,7 +1,5 @@
 "use strict";
 
-let ActiveUnits = require("./models/ActiveUnitsSchema.js");
-
 class Unit  {
   constructor(id, name, product, harvest) {
     this.id = id;
