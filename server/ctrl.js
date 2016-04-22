@@ -2,6 +2,18 @@
 
 var ActiveUnits = require("./models/ActiveUnitsSchema.js");
 
+function getUnitsList(ActiveUnitId) {
+  ActiveUnits.findById(
+    "571a51621c15f9423cf9b1f1",
+    function(err, ActiveUnits) {
+      if(err)
+        return err;
+      else
+        return ActiveUnits.units;
+    }
+  )
+}
+
 
 function createActiveUnit() {
   ActiveUnits.create(
@@ -20,7 +32,7 @@ function createUnit(Unit) {
   console.log("CREATING UNIT");
 
   ActiveUnits.findByIdAndUpdate(
-    "571a461a2fbb5a3834619dc8",
+    "571a51621c15f9423cf9b1f1",
     {$addToSet: {units: Unit} },
 
     function(err, ActiveUnits) {
