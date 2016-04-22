@@ -5,7 +5,9 @@ let Schema = mongoose.Schema;
 
 let UserCollection = new Schema(
 {
-    numUnits: { type: Number, required: true },
+    owner: { type: String, required: true },
+    numActiveUnits: { type: Number },
+    numArchivedUnits: { type: Number },
     units: [ { type: Schema.Types.ObjectId, ref: 'Unit' } ] ,
     archivedUnits : [ { type: Schema.Types.ObjectId, ref: 'ArchivedUnit' } ] 
 });
