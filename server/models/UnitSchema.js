@@ -30,5 +30,5 @@ let Unit = new Schema(
          }]
 });
 
-module.exports = mongoose.model("Unit", Unit);
+module.exports = mongoose.model("Unit", Unit, "Unit");
 

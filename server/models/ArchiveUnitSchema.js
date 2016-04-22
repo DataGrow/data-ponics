@@ -31,4 +31,4 @@ let ArchivedUnit = new Schema(
          }]
 });
 
-module.exports = mongoose.model("ArchivedUnit", ArchivedUnit);
+module.exports = mongoose.model("ArchivedUnit", ArchivedUnit, "ArchivedUnit");
