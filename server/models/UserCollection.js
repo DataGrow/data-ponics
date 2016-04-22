@@ -12,6 +12,6 @@ let UserCollection = new Schema(
     archivedUnits : [ { type: Schema.Types.ObjectId, ref: 'ArchivedUnit' } ] 
 });
 
-module.exports = mongoose.model('UserCollection', UserCollection);
+module.exports = mongoose.model('UserCollection', UserCollection, "UserCollection");
 
 

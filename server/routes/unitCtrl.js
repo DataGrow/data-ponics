@@ -9,8 +9,7 @@ let userCollectionId = "571a73b7b1fb75f953934e66";
 
 module.exports = {
     
-    getUnitsList: ( req, res ) => {
-        
+    getUnitsList: function(req, res) {        
         UserCollection
             .findOne( {}, "units" )
             .then( function(err, UnitsList) {                
@@ -56,7 +55,7 @@ module.exports = {
                 else
                     res.status(201).send(JSON.stringified("Unit Removed"));
             })
-    }
+    },
 
 
 

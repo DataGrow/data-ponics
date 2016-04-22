@@ -18,6 +18,7 @@ module.exports = function( app ) {
     app.route(`/api/units`)
         .get(ctrl.getUnitsList)
         
-        .post()
+    app.route(`/api/collection`)
+       .post(ctrl.createCollection);
     
 };
