@@ -2,74 +2,62 @@
 
 var ActiveUnits = require("./models/ActiveUnitsSchema.js");
 
-function getUnitsList() {
-  ActiveUnits.findById(
-    "571a51621c15f9423cf9b1f1",
-    "units",
-    function(err, UnitsList) {
-      if(err)
-        return err;
-      else
-        console.log(UnitsList);
-        return UnitsList;
-    }
-  )
-}
+module.exports = {
 
-function getUnit(UnitId) {
-  ActiveUnits.findById("571a51621c15f9423cf9b1f1", `units`)
-             .id(UnitId)
-             .then( function(err, Unit) {
-                if(err)
-                  return err;
+    getUnitsList: function ( ActiveUnitId ) {
+        ActiveUnits.findById(
+            "571a51621c15f9423cf9b1f1" ,
+            function ( err , ActiveUnits ) {
+                if ( err )
+                    return err;
                 else
-                  console.log(Unit);
-                  return Unit;
-              })
-}
+                    return ActiveUnits.units;
+            }
+        )
+    } ,
 
 
-function createActiveUnit() {
-  ActiveUnits.create(
-    { 
-      numUnits: 0,
-      units: []
-    }, function(err, ActiveUnit) {
-      if(err)
-        console.log("ERROR: ", err);
-      else
-        console.log("Units List: ", ActiveUnit);
-    });
-}
+    createActiveUnit: function () {
+        ActiveUnits.create(
+            {
+                numUnits: 0 ,
+                units   : []
+            } , function ( err , ActiveUnit ) {
+                if ( err )
+                    console.log( "ERROR: " , err );
+                else
+                    console.log( "Units List: " , ActiveUnit );
+            } );
+    } ,
+    createUnit : function ( Unit ) {
+        console.log( "CREATING UNIT" );
 
-function createUnit(Unit) {
-  ActiveUnits.findByIdAndUpdate(
-    "571a51621c15f9423cf9b1f1",
-    {$addToSet: {units: Unit} },
+        ActiveUnits.findByIdAndUpdate(
+            "571a51621c15f9423cf9b1f1" ,
+            { $addToSet: { units: Unit } } ,
 
-    function(err, ActiveUnits) {
-      if(err)
-        console.log(err);
-      else {    
-        console.log(ActiveUnits);          
-        console.log(ActiveUnits.units[ActiveUnits.units.length-1]);
-      }
+            function ( err , ActiveUnits ) {
+                if ( err )
+                    console.log( err );
+                else {
+                    console.log( ActiveUnits );
+                    console.log( ActiveUnits.units[ ActiveUnits.units.length - 1 ] );
+                }
+            }
+        )
+    } ,
+
+
+    unit01: {
+        name   : "unit01" ,
+        product: "weed" ,
+        harvest: {
+            id: 1
+        } ,
+        day    : []
     }
-  )
-}
 
-
-var unit01 =  {
-  name: "unit01",
-  product: "weed",
-  harvest: {
-      id: 1,
-  }, 
-
-  day: []
 };
-
-getUnit("571a517d4397586a3c626b99");
 //createActiveUnit();
 //createUnit(unit01);
 
