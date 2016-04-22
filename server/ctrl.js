@@ -2,16 +2,30 @@
 
 var ActiveUnits = require("./models/ActiveUnitsSchema.js");
 
-function getUnitsList(ActiveUnitId) {
+function getUnitsList() {
   ActiveUnits.findById(
     "571a51621c15f9423cf9b1f1",
-    function(err, ActiveUnits) {
+    "units",
+    function(err, UnitsList) {
       if(err)
         return err;
       else
-        return ActiveUnits.units;
+        console.log(UnitsList);
+        return UnitsList;
     }
   )
+}
+
+function getUnit(UnitId) {
+  ActiveUnits.findById("571a51621c15f9423cf9b1f1", `units`)
+             .id(UnitId)
+             .then( function(err, Unit) {
+                if(err)
+                  return err;
+                else
+                  console.log(Unit);
+                  return Unit;
+              })
 }
 
 
@@ -29,8 +43,6 @@ function createActiveUnit() {
 }
 
 function createUnit(Unit) {
-  console.log("CREATING UNIT");
-
   ActiveUnits.findByIdAndUpdate(
     "571a51621c15f9423cf9b1f1",
     {$addToSet: {units: Unit} },
@@ -57,6 +69,7 @@ var unit01 =  {
   day: []
 };
 
+getUnit("571a517d4397586a3c626b99");
 //createActiveUnit();
 //createUnit(unit01);
 
