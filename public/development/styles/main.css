@@ -5,9 +5,9 @@ body {
   font-family: "Raleway", Frutiger, "Frutiger Linotype", Univers, Calibri, "Gill Sans", "Gill Sans MT", "Myriad Pro", Myriad, "DejaVu Sans Condensed", "Liberation Sans", "Nimbus Sans L", Tahoma, Geneva, "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 
-* {
+/** {
   box-sizing:border-box;
-}
+}*/
 
 /*SIDEBAR*/
 
@@ -132,6 +132,7 @@ body {
 /*make menu-toggle visible on small screens*/
 #menu-toggle {
   display:none;
+  font-size:48px;
 }
 
 @media(max-width:768px) {
@@ -153,5 +154,14 @@ body {
 
 .unit-content {
   border: 1px solid black;
-  height:300px;
+  min-height:300px;
+  padding: 10px;
+}
+
+.data-stream {
+  border: 1px solid black;
+  height:auto;
+  padding-left:10px;
+  background-color:black;
+  color:white;
 }
