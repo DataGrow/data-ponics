@@ -27,6 +27,9 @@ module.exports = wss;
 require("./server/websockets.js");
 
 
+require("./server/ctrl.js");
+
+
 
 
 mongoose.connect(mongoUri);
