@@ -9,10 +9,10 @@ angular.module('dataGrow')
   $scope.UnitId;
   $scope.Data;
  
- UnitId.Data()
- 	.success(function(Data) {
- 		this.Data = Data;
- 	});
+ // UnitId.Data()
+ // 	.success(function(Data) {
+ // 		this.Data = Data;
+ // 	});
 
   $scope.list = function() {
   	$scope.Data.push($scope.UnitId)
@@ -20,6 +20,10 @@ angular.module('dataGrow')
 
   ws.on('info', function(data) {
   	$scope.info.push(data);
-  })
+  });
+
+  // $scope.sendData = function() {
+  // 	return ws.send(data);
+  // }
 
 }]);
