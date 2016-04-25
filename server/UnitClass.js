@@ -1,13 +1,8 @@
 "use strict";
-let Unit = require('./models/UnitSchema')
 
-<<<<<<< HEAD
-class cacheUnit  {
-=======
 let Unit = require("./models/UnitSchema.js");
 
 class CacheUnit  {
->>>>>>> b10087ddcac14f8b5eb6d1aad93527ebe08741b2
   constructor(id, name, product, harvest) {
     this.id = id;
     this.name = name;
@@ -37,23 +32,7 @@ class CacheUnit  {
   }
 
   pushToDB(avgData) {
-<<<<<<< HEAD
-    for(var i = 0; i < 10; i++ ) {
-      Unit.findById("571aaa4cc1b68a6a189305a1", function(err, queriedUnit) {
-
-
-        //get all arrays
-        var dayArr = queriedUnit.day;
-        var hourArr = dayArr[dayArr.length-1].hour;
-        var dataArr = hourArr[hourArr.length-1].data;
-        var avgData = { waterTemp: 0, airTemp: 0, humidity: 0, light: 0 };
-
-        console.log("Days:", dayArr.length);
-        console.log("Hours:", hourArr.length);
-        console.log("DataPoints:", dataArr.length);
-
-=======
-    Unit.findById("571aaa4cc1b68a6a189305a1", function(err, queriedUnit) {        
+    Unit.findById(this.id, function(err, queriedUnit) {        
       //get all arrays
       var dayArr = queriedUnit.day;
       var hourArr = dayArr[dayArr.length-1].hour;
@@ -71,27 +50,10 @@ class CacheUnit  {
       if (hourArr.length >= 24) {
         dayArr.push({  hour: [{   data: [ ]   }]   });
       };      
->>>>>>> 40a70daa53dc9c83865a53feb945df99556ced20
 
-        //push new data to data arr
-        dataArr.push(avgData);
-        console.log(dataArr)
-
-
-        //if hour has 4 data objects add new hour
-        if (dataArr.length >= 4) {
-          hourArr.push({ data: [ ] });
-        }
-
-        //if hour has 4 data objects add new hour
-        if (hourArr.length >= 24) {
-          dayArr.push({  hour: [{   data: [ ]   }]   });
-        };
-
-
-
-        queriedUnit.save();
-      });
+      queriedUnit.save();
+    });
+            
   }
 
 
@@ -102,7 +64,7 @@ class CacheUnit  {
     //if unit has 15 mins of data take average and push to DB
     if(this.dataPoints.length >= 900) {
       let fifteenMinAvg = this.getAvg(this.dataPoints);
-      //pushToDB(fifteenMinAvg);
+      pushToDB(fifteenMinAvg);
     }
   }
   
