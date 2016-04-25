@@ -1,5 +1,6 @@
-angular.module('dataGrow').controller('landingCtrl', ['$scope', function($scope) {
+angular.module('dataGrow')
+.controller('landingCtrl', function($scope, websocketService) {
 
+	websocketService.startWs();
 
-
-}]);
+});

@@ -1,6 +1,8 @@
-angular.module('dataGrow', ['ui.router'])
+angular.module('dataGrow', ['ui.router', 'ws'])
 
-	.config( function ($stateProvider, $urlRouterProvider ) {
+	.config( function ($stateProvider, $urlRouterProvider, wsProvider ) {
+
+    wsProvider.setUrl('ws://echo.websocket.org');
 
     $urlRouterProvider.otherwise('/');
 
