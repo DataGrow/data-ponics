@@ -16,7 +16,7 @@ angular.module('dataGrow')
 		};
 
 	allUnits = function() {
-		return $http.get('/api/units/active');
+		return $http.get('/api/units/');
 	}
 
 	UnitId = function() {
