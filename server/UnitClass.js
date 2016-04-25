@@ -37,6 +37,7 @@ class CacheUnit  {
   }
 
   pushToDB(avgData) {
+<<<<<<< HEAD
     for(var i = 0; i < 10; i++ ) {
       Unit.findById("571aaa4cc1b68a6a189305a1", function(err, queriedUnit) {
 
@@ -51,6 +52,26 @@ class CacheUnit  {
         console.log("Hours:", hourArr.length);
         console.log("DataPoints:", dataArr.length);
 
+=======
+    Unit.findById("571aaa4cc1b68a6a189305a1", function(err, queriedUnit) {        
+      //get all arrays
+      var dayArr = queriedUnit.day;
+      var hourArr = dayArr[dayArr.length-1].hour;
+      var dataArr = hourArr[hourArr.length-1].data;
+      
+      //push new data to data arr
+      dataArr.push(avgData);
+  
+      //if hour has 4 data objects add new hour
+      if (dataArr.length >= 4) {        
+        hourArr.push({ data: [ ] });
+      }
+
+      //if day has 24 hour objects add new day
+      if (hourArr.length >= 24) {
+        dayArr.push({  hour: [{   data: [ ]   }]   });
+      };      
+>>>>>>> 40a70daa53dc9c83865a53feb945df99556ced20
 
         //push new data to data arr
         dataArr.push(avgData);
