@@ -5,7 +5,7 @@ let Archive = require('../models/ArchiveUnitSchema'),
     Unit = require('../models/UnitSchema');
 
 
-let userCollectionId = "571a73b7b1fb75f953934e66";
+let userCollectionId = "571a80da47dd5d6c5bd44d3b";
 
 module.exports = {
     
@@ -21,24 +21,26 @@ module.exports = {
     },
 
     createUnit: function(req, res) {
-        Unit.create(req.body)
-            .then(function(err, newUnit) {
-                UserCollection.findByIdAndUpdate(
-                    userCollectionId,    //query
-                    {$push: {units: newUnit._id}}, //push new unit
-                    {safe: true, upsert: true}) //options
-                    .then(function(err, UserCollection) {
+        Unit.create(req.body, function(err, newUnit) {
+
+            //add newUnit to the users collection of active units
+            UserCollection.findByIdAndUpdate(
+                    userCollectionId,    
+                    {$addToSet: {units: newUnit._id}},
+                    {safe: true, upsert: true, new: true}, 
+                    function(err, updatedCollection) {
+                        console.log(updatedCollection);                        
                         if(err) 
                             res.status(300).send(err);
                         else
-                            res.status(201).send(UserCollection);
+                            res.status(201).send(updatedCollection.units);
                     }
-                )
-            })
+            )
+        })            
     },
 
     getUnit: function(req, res) {
-        Unit.findById(req.params)
+        Unit.findById(req.body)
             .then(function(err, queriedUnit) {
                 if(err)
                     res.status(300).send(err);
@@ -48,7 +50,7 @@ module.exports = {
     },
 
     deleteUnit: function(req, res) {
-        Unit.findByIdandRemove(req.params)
+        Unit.findByIdandRemove(req.body)
             .then(function(err, removedUnit) {
                 if(err)
                     res.status(300).send(err);

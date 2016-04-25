@@ -1,7 +1,13 @@
 "use strict";
 let Unit = require('./models/UnitSchema')
 
+<<<<<<< HEAD
 class cacheUnit  {
+=======
+let Unit = require("./models/UnitSchema.js");
+
+class CacheUnit  {
+>>>>>>> b10087ddcac14f8b5eb6d1aad93527ebe08741b2
   constructor(id, name, product, harvest) {
     this.id = id;
     this.name = name;
@@ -16,12 +22,9 @@ class cacheUnit  {
     
     // get sum of all sensor data
     let sumObj = dataPoints.reduce(function(prevVal, curVal) {
-        
-        // iterate through sensor type in DataPoint Obj and add next value
         for(let reading in prevVal) {
           prevVal[reading] += curVal[reading];
         }
-
         return prevVal; 
     });
 
@@ -34,12 +37,40 @@ class cacheUnit  {
   }
 
   pushToDB(avgData) {
+<<<<<<< HEAD
 
     Unit.findByIdAndUpdate(this.id,
         { $push : { day[ day.length - 1 ].hour[ hour.length - 1 ].data : avgData } },
         ( err, unit ) => {
       
         }
+=======
+    Unit.findById(this.id, function(err, queriedUnit) {
+
+      //push new data to data arr
+      let dataArr = queriedUnit.day[day.length-1].hour[hour.length-1].data;
+      dataArr.push(avgData);
+
+
+      //if hour has 4 data objects add new hour
+      if (dataArr.length >= 4) {
+        queriedUnit.day[day.length-1].hour.push({ data: [ ] });
+      }
+
+      //if hour has 4 data objects add new hour
+      if (queriedUnit.day[day.length-1].hour.length >= 24) {
+        queriedUnit.day.push({
+            hour: [{
+                     data: [ ]
+                  }]
+            });
+      };
+
+      queriedUnit.save();
+    });
+            
+  }
+>>>>>>> b10087ddcac14f8b5eb6d1aad93527ebe08741b2
 
 
   cacheDataPoint(newReading) {
@@ -51,17 +82,7 @@ class cacheUnit  {
       //pushToDB(fifteenMinAvg);
     }
   }
-
-  /*collection.findByIdAndUpdate(
-    1,
-    {$push: {items: item}},
-    {safe: true, upsert: true},
-    function(err, model) {
-        console.log(err);
-    }
-  );*/
   
-
 }
 
 
@@ -69,4 +90,4 @@ class cacheUnit  {
 
 
 
-module.exports = Unit
+module.exports = CacheUnit;

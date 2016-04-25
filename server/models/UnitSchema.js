@@ -25,10 +25,14 @@ let Unit = new Schema(
 
     day: [{
             hour: [{
-                     Data
+                     data: [ Data ]
                   }]
          }]
 });
 
 module.exports = mongoose.model("Unit", Unit, "Unit");
+
+
+
+
 
