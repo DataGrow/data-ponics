@@ -32,7 +32,6 @@ require("./server/routes/unitRoutes")(app);
 
 
 
-
 mongoose.connect(mongoUri);
 mongoose.connection.once('open', function() {
         console.log('Connected to MongoDB at ' + mongoUri);

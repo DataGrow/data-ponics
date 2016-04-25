@@ -10,14 +10,14 @@ let ctrl = require('./unitCtrl'),
 
 module.exports = function( app ) {
     
-    app.route(`/api/unit/:unitId`)
+    app.route(`/api/unit/`)
         .get()
         
-        .post();
+        .post(ctrl.createUnit);
     
     app.route(`/api/units`)
         .get(ctrl.getUnitsList)
-        
+
     app.route(`/api/collection`)
        .post(ctrl.createCollection);
     

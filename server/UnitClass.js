@@ -1,6 +1,8 @@
 "use strict";
 
-class Unit  {
+let Unit = require("./models/UnitSchema.js");
+
+class CacheUnit  {
   constructor(id, name, product, harvest) {
     this.id = id;
     this.name = name;
@@ -15,12 +17,9 @@ class Unit  {
     
     // get sum of all sensor data
     let sumObj = dataPoints.reduce(function(prevVal, curVal) {
-        
-        // iterate through sensor type in DataPoint Obj and add next value
         for(let reading in prevVal) {
           prevVal[reading] += curVal[reading];
         }
-
         return prevVal; 
     });
 
@@ -32,19 +31,32 @@ class Unit  {
     return avgObj;
   }
 
-  /*pushToDB(avgData) {
-    ActiveUnits.findById("5719851ede18f47121833402").units.id(),
+  pushToDB(avgData) {
+    Unit.findById(this.id, function(err, queriedUnit) {
 
-      function(err, ActiveUnits) {
-        if(err)
-          console.log(err);
-        else
-          console.log(ActiveUnits);
+      //push new data to data arr
+      let dataArr = queriedUnit.day[day.length-1].hour[hour.length-1].data;
+      dataArr.push(avgData);
+
+
+      //if hour has 4 data objects add new hour
+      if (dataArr.length >= 4) {
+        queriedUnit.day[day.length-1].hour.push({ data: [ ] });
       }
-    )
 
+      //if hour has 4 data objects add new hour
+      if (queriedUnit.day[day.length-1].hour.length >= 24) {
+        queriedUnit.day.push({
+            hour: [{
+                     data: [ ]
+                  }]
+            });
+      };
 
-  }*/
+      queriedUnit.save();
+    });
+            
+  }
 
 
   cacheDataPoint(newReading) {
@@ -56,17 +68,7 @@ class Unit  {
       //pushToDB(fifteenMinAvg);
     }
   }
-
-  /*collection.findByIdAndUpdate(
-    1,
-    {$push: {items: item}},
-    {safe: true, upsert: true},
-    function(err, model) {
-        console.log(err);
-    }
-  );*/
   
-
 }
 
 
@@ -74,4 +76,4 @@ class Unit  {
 
 
 
-module.exports = Unit
+module.exports = CacheUnit;
