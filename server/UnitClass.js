@@ -1,6 +1,7 @@
 "use strict";
+let Unit = require('./models/UnitSchema')
 
-class Unit  {
+class cacheUnit  {
   constructor(id, name, product, harvest) {
     this.id = id;
     this.name = name;
@@ -32,19 +33,13 @@ class Unit  {
     return avgObj;
   }
 
-  /*pushToDB(avgData) {
-    ActiveUnits.findById("5719851ede18f47121833402").units.id(),
+  pushToDB(avgData) {
 
-      function(err, ActiveUnits) {
-        if(err)
-          console.log(err);
-        else
-          console.log(ActiveUnits);
-      }
-    )
-
-
-  }*/
+    Unit.findByIdAndUpdate(this.id,
+        { $push : { day[ day.length - 1 ].hour[ hour.length - 1 ].data : avgData } },
+        ( err, unit ) => {
+      
+        }
 
 
   cacheDataPoint(newReading) {

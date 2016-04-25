@@ -10,13 +10,18 @@ let ctrl = require('./unitCtrl'),
 
 module.exports = function( app ) {
     
+    app.route(`/api/unit`)
+        .post(ctrl.createUnit);
+    
     app.route(`/api/unit/:unitId`)
-        .get()
+        .get(ctrl.getUnit)
         
-        .post();
+        
+    
+        .delete(ctrl.deleteUnit);
     
     app.route(`/api/units`)
-        .get(ctrl.getUnitsList)
+        .get(ctrl.getUnitsList);
         
     app.route(`/api/collection`)
        .post(ctrl.createCollection);

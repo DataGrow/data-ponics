@@ -25,9 +25,9 @@ module.exports = {
             .then(function(err, newUnit) {
                 UserCollection.findByIdAndUpdate(
                     userCollectionId,    //query
-                    {$push: {units: newUnit}}, //push new unit
-                    {safe: true, upsert: true}, //options
-                    function(err, UserCollection) {
+                    {$push: {units: newUnit._id}}, //push new unit
+                    {safe: true, upsert: true}) //options
+                    .then(function(err, UserCollection) {
                         if(err) 
                             res.status(300).send(err);
                         else
@@ -38,7 +38,7 @@ module.exports = {
     },
 
     getUnit: function(req, res) {
-        Unit.findById(req.body)
+        Unit.findById(req.params)
             .then(function(err, queriedUnit) {
                 if(err)
                     res.status(300).send(err);
@@ -48,7 +48,7 @@ module.exports = {
     },
 
     deleteUnit: function(req, res) {
-        Unit.findByIdandRemove(req.body)
+        Unit.findByIdandRemove(req.params)
             .then(function(err, removedUnit) {
                 if(err)
                     res.status(300).send(err);
