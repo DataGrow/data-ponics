@@ -32,26 +32,24 @@ class CacheUnit  {
   }
 
   pushToDB(avgData) {
-    Unit.findById(this.id, function(err, queriedUnit) {
-
+    Unit.findById("571aaa4cc1b68a6a189305a1", function(err, queriedUnit) {        
+      //get all arrays
+      var dayArr = queriedUnit.day;
+      var hourArr = dayArr[dayArr.length-1].hour;
+      var dataArr = hourArr[hourArr.length-1].data;
+      
       //push new data to data arr
-      let dataArr = queriedUnit.day[day.length-1].hour[hour.length-1].data;
       dataArr.push(avgData);
-
-
+  
       //if hour has 4 data objects add new hour
-      if (dataArr.length >= 4) {
-        queriedUnit.day[day.length-1].hour.push({ data: [ ] });
+      if (dataArr.length >= 4) {        
+        hourArr.push({ data: [ ] });
       }
 
-      //if hour has 4 data objects add new hour
-      if (queriedUnit.day[day.length-1].hour.length >= 24) {
-        queriedUnit.day.push({
-            hour: [{
-                     data: [ ]
-                  }]
-            });
-      };
+      //if day has 24 hour objects add new day
+      if (hourArr.length >= 24) {
+        dayArr.push({  hour: [{   data: [ ]   }]   });
+      };      
 
       queriedUnit.save();
     });

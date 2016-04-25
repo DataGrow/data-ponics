@@ -28,10 +28,9 @@ wss.on('connection', function connection(ws) {
 
 let Unit = require("./models/UnitSchema.js");
 
-for(var i = 0; i < 10; i++ ) {
-Unit.findById("571aaa4cc1b68a6a189305a1", function(err, queriedUnit) {
-
-      
+setInterval(function(){
+  
+    Unit.findById("571aaa4cc1b68a6a189305a1", function(err, queriedUnit) {        
       //get all arrays
       var dayArr = queriedUnit.day;
       var hourArr = dayArr[dayArr.length-1].hour;
@@ -45,9 +44,7 @@ Unit.findById("571aaa4cc1b68a6a189305a1", function(err, queriedUnit) {
 
       //push new data to data arr
       dataArr.push(avgData);
-      console.log(dataArr)
-
-
+  
       //if hour has 4 data objects add new hour
       if (dataArr.length >= 4) {        
         hourArr.push({ data: [ ] });
@@ -62,5 +59,6 @@ Unit.findById("571aaa4cc1b68a6a189305a1", function(err, queriedUnit) {
 
       queriedUnit.save();
     });
-}
+  
+}, 1000);
 
