@@ -1,6 +1,6 @@
 angular.module('dataGrow')
 .controller('activeUnitInfoCtrl', ['$scope', 'websocketService', 'unitInfoService', function($scope, websocketService, unitInfoService) {
-  
+
   //Get active unit data from server at /api/unit/:unitId
 
   //Get websocket data to display from websocketService
@@ -15,19 +15,16 @@ angular.module('dataGrow')
  // 	});
 
   function getUnitInfo() {
-    $scope.list = function() {
+    $scope.UnitId = function() {
   	 $scope.Data.push($scope.UnitId)
         return UnitId.data
     };
-
-}
-
-  ws.on('info', function(data) {
-     $scope.info.push(data);
-    })
+  }
+  // ws.on('info', function(data) {
+  //    $scope.info.push(data);
+  //   })
 
   // $scope.sendData = function() {
   // 	return ws.send(data);
   // }
-
 }]);

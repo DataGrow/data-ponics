@@ -4,10 +4,8 @@ angular.module('dataGrow').controller('activeUnitsCtrl', ['$scope', 'websocketSe
   $scope.ActiveUnits = [];
   $scope.UnitId;
 
- 
-
-  $scope.list = function() {
-  	$scope.ActiveUnits.push($scope.UnitId)
+  $scope.allUnits = function() {
+  	return $scope.ActiveUnits;
   }
 
 }]);
