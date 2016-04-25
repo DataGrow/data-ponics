@@ -1,8 +1,8 @@
 "use strict";
 
-let ActiveUnits = require("./models/ActiveUnitsSchema.js");
+let Unit = require("./models/UnitSchema.js");
 
-class Unit  {
+class CacheUnit  {
   constructor(id, name, product, harvest) {
     this.id = id;
     this.name = name;
@@ -17,12 +17,9 @@ class Unit  {
     
     // get sum of all sensor data
     let sumObj = dataPoints.reduce(function(prevVal, curVal) {
-        
-        // iterate through sensor type in DataPoint Obj and add next value
         for(let reading in prevVal) {
           prevVal[reading] += curVal[reading];
         }
-
         return prevVal; 
     });
 
@@ -34,19 +31,31 @@ class Unit  {
     return avgObj;
   }
 
-  /*pushToDB(avgData) {
-    ActiveUnits.findById("5719851ede18f47121833402").units.id(),
-
-      function(err, ActiveUnits) {
-        if(err)
-          console.log(err);
-        else
-          console.log(ActiveUnits);
+  pushToDB(avgData) {
+    Unit.findById(this.id, function(err, queriedUnit) {        
+      //get all arrays
+      var dayArr = queriedUnit.day;
+      var hourArr = dayArr[dayArr.length-1].hour;
+      var dataArr = hourArr[hourArr.length-1].data;
+      
+      //push new data to data arr
+      dataArr.push(avgData);
+  
+      //if hour has 4 data objects add new hour
+      if (dataArr.length >= 4) {        
+        hourArr.push({ data: [ ] });
       }
-    )
 
+      //if day has 24 hour objects add new day
+      if (hourArr.length >= 24) {
+        dayArr.push({  hour: [{   data: [ ]   }]   });
+      };      
 
-  }*/
+      queriedUnit.save();
+    });
+            
+  }
+
 
 
   cacheDataPoint(newReading) {
@@ -55,20 +64,10 @@ class Unit  {
     //if unit has 15 mins of data take average and push to DB
     if(this.dataPoints.length >= 900) {
       let fifteenMinAvg = this.getAvg(this.dataPoints);
-      //pushToDB(fifteenMinAvg);
+      pushToDB(fifteenMinAvg);
     }
   }
-
-  /*collection.findByIdAndUpdate(
-    1,
-    {$push: {items: item}},
-    {safe: true, upsert: true},
-    function(err, model) {
-        console.log(err);
-    }
-  );*/
   
-
 }
 
 
@@ -76,4 +75,4 @@ class Unit  {
 
 
 
-module.exports = Unit
+module.exports = CacheUnit;
