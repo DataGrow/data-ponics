@@ -1,4 +1,4 @@
-angular.module('dataGrow').controller('activeUnitsCtrl', ['$scope', 'websocketService', function($scope, websocketService) {
+angular.module('dataGrow').controller('activeUnitsCtrl', ['$scope', 'websocketService', function($scope, websocketService, ActiveUnits) {
 	//overview ctrl
   
   // $scope.ActiveUnits = [];

@@ -1,5 +1,5 @@
 angular.module('dataGrow')
-.controller('activeUnitInfoCtrl', ['$scope', 'websocketService', 'unitInfoService', function($scope, websocketService, unitInfoService) {
+.controller('activeUnitInfoCtrl', ['$scope', 'websocketService', 'unitInfoService', function($scope, websocketService, unitInfoService, activeUnitInfo) {
 
   //Get active unit data from server at /api/unit/:unitId
 

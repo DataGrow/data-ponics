@@ -25,7 +25,12 @@ angular.module('dataGrow', ['ui.router', 'ws'])
 				.state('active-unit-info', {
 					url: '/unit/active/:unitId',
 					templateUrl: './development/partials/active-unit-info.html',
-					controller: 'activeUnitInfoCtrl'
+					controller: 'activeUnitInfoCtrl',
+					resolve: {
+						ActiveUnitsInfo: function(unitInfoService) {
+							return unitInfoService.UnitId();
+						}
+					}
 				})
 				.state('archived-units', {
 		            url: '/units/archived',
