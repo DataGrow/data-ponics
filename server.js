@@ -1,9 +1,10 @@
 const express = require('express'),
-	  app = express(),
+	    app = express(),
       session = require('express-session'),
 
       port = process.env.PORT || 8000,
       server = require('http').createServer(),
+      nodeCache = require('node-cache'),
     
       bodyParser = require('body-parser'),
       cors = require('cors'),
@@ -19,21 +20,17 @@ app.use(cors());
 app.use(bodyParser.json());
 app.use(express.static(__dirname + '/public'));
 
-require("./server/websockets.js");
 
 var WebSocketServer = require('ws').Server,
     wss = new WebSocketServer({ server: server });
 
 
-wss.on('connection', function connection(ws) {
+module.exports = wss;
+require("./server/websockets.js");
 
-    ws.send('Connected to WebSocket');
 
-    ws.on('message', function incoming(message) {
-        ws.send(message);
-    });
+require("./server/routes/unitRoutes")(app);
 
-});
 
 
 mongoose.connect(mongoUri);
