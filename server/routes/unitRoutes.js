@@ -15,7 +15,7 @@ module.exports = function( app ) {
     app.route(`/api/unit/`)
         .post(apiCache('2 minutes'),ctrl.createUnit);
     
-    app.route(`/api/units`)
+    app.route(`/api/unitsList`)
         .get(apiCache('2 minutes'),ctrl.getUnitsList);
     
     app.route(`/api/collection`)

@@ -11,14 +11,13 @@ module.exports = {
     
     getUnitsList: function(req, res) {        
         UserCollection
-            .findOne( {}, "units" )
-            .then( function(err, UnitsList) {                
-                if (err) {
+            .findOne( {} )
+            .populate( "units" )
+            .exec( function(err, userCollection) {                
+                if (err) 
                     res.status( 500 ).send( err );
-                }
-                    
-                    res.send( UnitsList );
-
+                else
+                    res.send( userCollection.units );
             });
     },
 
@@ -68,7 +67,6 @@ module.exports = {
             else
                 res.status(200).send(Collection);
         })     
-    }
-    
+    }   
     
 };
