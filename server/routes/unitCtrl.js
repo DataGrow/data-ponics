@@ -1,7 +1,7 @@
 'use strict';
 
 let Archive = require('../models/ArchiveUnitSchema'),
-    UserCollection = require('../models/UserCollection'),
+    UserCollection = require('../models/UserCollection.js'),
     Unit = require('../models/UnitSchema');
 
 
@@ -16,7 +16,7 @@ module.exports = {
                 if (err) {
                     res.status( 500 ).send( err );
                 }
-                    console.log( UnitsList );
+                    
                     res.send( UnitsList );
 
             });
@@ -26,20 +26,19 @@ module.exports = {
         new Unit(req.body).save( function(err, newUnit) {
             //add newUnit to the users collection of active units
             UserCollection.findByIdAndUpdate(
-                userCollectionId,    
-                {$addToSet: {units: newUnit._id}},
-                {safe: true, upsert: true, new: true}, 
-                function(err, updatedCollection) {
-                    console.log(updatedCollection);                        
-                    if(err) 
-                        res.status(300).send(err);
-                    else
-                        res.status(201).send(updatedCollection.units);
-                }
+                    userCollectionId,    
+                    {$addToSet: {units: newUnit._id}},
+                    {safe: true, upsert: true, new: true}, 
+                    function(err, updatedCollection) {
+                        console.log(updatedCollection);                        
+                        if(err) 
+                            res.status(300).send(err);
+                        else
+                            res.status(201).send(updatedCollection.units);
+                    }
             )
         })            
     },
-
     getUnit: function(req, res) {
         Unit.findById(req.params.unitId)
             .then(function(err, queriedUnit) {
@@ -61,7 +60,6 @@ module.exports = {
                     res.status(201).send(JSON.stringified("Unit Removed"));
             })
     },
-
 
     createCollection: function(req, res) {
         UserCollection.create(req.body).then(function(err, Collection) {
