@@ -3,6 +3,7 @@
 
 body {
   font-family: "Raleway", Frutiger, "Frutiger Linotype", Univers, Calibri, "Gill Sans", "Gill Sans MT", "Myriad Pro", Myriad, "DejaVu Sans Condensed", "Liberation Sans", "Nimbus Sans L", Tahoma, Geneva, "Helvetica Neue", Helvetica, Arial, sans-serif;
+  background-color: #d8d8d8;
 }
 
 /** {
@@ -33,7 +34,7 @@ body {
     height: 100%;
     margin-left: -250px;
     overflow-y: auto;
-    background: #000;
+    background: #3a3a3a;
     -webkit-transition: all 0.5s ease;
     -moz-transition: all 0.5s ease;
     -o-transition: all 0.5s ease;
@@ -75,13 +76,13 @@ body {
 .sidebar-nav li a {
     display: block;
     text-decoration: none;
-    color: #999999;
+    color: white;
 }
 
 .sidebar-nav li a:hover {
     text-decoration: none;
     color: #fff;
-    background: rgba(255,255,255,0.2);
+    background:#385d8c;
 }
 
 .sidebar-nav li a:active,
@@ -96,12 +97,12 @@ body {
 }
 
 .sidebar-nav > .sidebar-brand a {
-    color: #999999;
+    color: white;
 }
 
 .sidebar-nav > .sidebar-brand a:hover {
     color: #fff;
-    background: none;
+    background:#385d8c;
 }
 
 @media(min-width:768px) {
@@ -115,6 +116,7 @@ body {
 
     #sidebar-wrapper {
         width: 250px;
+        border-top:5px solid #d8d8d8;
     }
 
     #wrapper.toggled #sidebar-wrapper {
@@ -122,8 +124,9 @@ body {
     }
 
     #page-content-wrapper {
-        padding: 20px;
+        padding: 0 20px 20px 20px;
         position: relative;
+        border-top:5px solid #3a3a3a;
     }
 
     #wrapper.toggled #page-content-wrapper {
@@ -135,7 +138,8 @@ body {
 /*make menu-toggle visible on small screens*/
 #menu-toggle {
   display:none;
-  font-size:48px;
+  font-size:36px;
+
 }
 
 @media(max-width:768px) {
@@ -144,7 +148,37 @@ body {
   }
 }
 
+/*TOP NAV BAR*/
+.dashboard-nav {
+  /*background:#385d8c;*/
+  background: #59ad4b;
+  /*background: #2998fa;*/
+}
+
+.dashboard-nav a {
+  color:white;
+}
+
+.dashboard-nav .navbar-brand {
+  padding-left: 20px;
+  font-weight:bolder;
+}
+
 /*ACTIVE UNITS VIEW*/
+
+.header-img {
+  width:100%;
+  height:auto;
+  /*border: 1px solid white;*/
+  margin-left:-20px;
+  margin-right:-20px;
+  padding-left: 40px;
+}
+
+.header-img h1 {
+    font-weight: 900;
+    font-size:4em;
+}
 
 .unit-contain {
   padding-left:0;
@@ -156,15 +190,44 @@ body {
 }
 
 .unit-content {
-  border: 1px solid black;
+  /*border: 2px solid #3a3a3a;*/
   min-height:300px;
   padding: 10px;
+  background-color: white;
+  /*border-radius:5px;*/
+  -webkit-box-shadow: 10px 10px 5px 0px rgba(58,58,58,1);
+  -moz-box-shadow: 10px 10px 5px 0px rgba(58,58,58,1);
+  box-shadow: 10px 10px 5px 0px rgba(58,58,58,1);
 }
 
+.unit-content h3 {
+  font-weight:bolder;
+  display:inline-block;
+}
+
+
 .data-stream {
-  border: 1px solid black;
+  /*border: 1px solid #385d8c;*/
+  border: 1px solid #3a3a3a;
   height:auto;
   padding-left:10px;
-  background-color:black;
+  background:#385d8c;
+    /*background: #59ad4b;*/
+  /*background: #3a3a3a;*/
+    /*background: #2998fa;*/
   color:white;
+}
+
+.unit-name {
+  display:inline-block;
+}
+.plant-name {
+  display:inline-block;
+  font-weight:bolder;
+}
+
+.current-day {
+  display:inline-block;
+  font-weight:bolder;
+  text-align:right;
 }
