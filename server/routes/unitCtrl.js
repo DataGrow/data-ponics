@@ -1,7 +1,7 @@
 'use strict';
 
 let Archive = require('../models/ArchiveUnitSchema'),
-    UserCollection = require('../models/UserCollection.js'),
+    UserCollection = require('../models/UserCollection'),
     Unit = require('../models/UnitSchema');
 
 
@@ -26,16 +26,16 @@ module.exports = {
         new Unit(req.body).save( function(err, newUnit) {
             //add newUnit to the users collection of active units
             UserCollection.findByIdAndUpdate(
-                    userCollectionId,    
-                    {$addToSet: {units: newUnit._id}},
-                    {safe: true, upsert: true, new: true}, 
-                    function(err, updatedCollection) {
-                        console.log(updatedCollection);                        
-                        if(err) 
-                            res.status(300).send(err);
-                        else
-                            res.status(201).send(updatedCollection.units);
-                    }
+                userCollectionId,    
+                {$addToSet: {units: newUnit._id}},
+                {safe: true, upsert: true, new: true}, 
+                function(err, updatedCollection) {
+                    console.log(updatedCollection);                        
+                    if(err) 
+                        res.status(300).send(err);
+                    else
+                        res.status(201).send(updatedCollection.units);
+                }
             )
         })            
     },
@@ -61,14 +61,6 @@ module.exports = {
                     res.status(201).send(JSON.stringified("Unit Removed"));
             })
     },
-
-
-
-
-
-
-
-
 
 
     createCollection: function(req, res) {
