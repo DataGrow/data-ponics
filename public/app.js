@@ -16,11 +16,11 @@ angular.module('dataGrow', ['ui.router', 'ws'])
 		            url: '/units/active',
 		            templateUrl: './development/partials/active-units.html',
 		            controller: 'activeUnitsCtrl',
-		            resolve: {
-  						ActiveUnits: function(unitInfoService) {
-  							return unitInfoService.allUnits();
-  						}
-  					}
+		            //resolve: {
+  					//	ActiveUnits: function(unitInfoService) {
+  					//		return unitInfoService.allUnits();
+  					//	}
+  					//}
 		        })
 				.state('active-unit-info', {
 					url: '/unit/active/:unitId',
