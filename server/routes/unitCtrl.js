@@ -11,31 +11,30 @@ module.exports = {
     
     getUnitsList: function(req, res) {        
         UserCollection
-            .findOne( {}, "units" )
-            .then( function(err, UnitsList) {                
-                if (err) {
+            .findOne( {} )
+            .populate( "units" )
+            .exec( function(err, userCollection) {                
+                if (err) 
                     res.status( 500 ).send( err );
-                }
-                    
-                    res.send( UnitsList );
-
+                else
+                    res.send( userCollection.units );
             });
     },
 
     createUnit: function(req, res) {
-        new Unit(req.body).save( function(err, newUnit) {
+        Unit.create(req.body, function(err, newUnit) {
             //add newUnit to the users collection of active units
             UserCollection.findByIdAndUpdate(
-                    userCollectionId,    
-                    {$addToSet: {units: newUnit._id}},
-                    {safe: true, upsert: true, new: true}, 
-                    function(err, updatedCollection) {
-                        console.log(updatedCollection);                        
-                        if(err) 
-                            res.status(300).send(err);
-                        else
-                            res.status(201).send(updatedCollection.units);
-                    }
+                userCollectionId,    
+                {$addToSet: {units: newUnit._id}},
+                {safe: true, upsert: true, new: true}, 
+                function(err, updatedCollection) {
+                    console.log(updatedCollection);                        
+                    if(err) 
+                        res.status(300).send(err);
+                    else
+                        res.status(201).send(updatedCollection.units);
+                }
             )
         })            
     },
@@ -68,7 +67,6 @@ module.exports = {
             else
                 res.status(200).send(Collection);
         })     
-    }
-    
+    }   
     
 };

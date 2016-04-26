@@ -13,11 +13,11 @@ module.exports = function( app ) {
         .delete(ctrl.deleteUnit);
 
     app.route(`/api/unit/`)
-        .post(apiCache('2 minutes'),ctrl.createUnit);
+        .post(ctrl.createUnit);
     
-    app.route(`/api/units`)
+    app.route(`/api/unitsList`)
         .get(apiCache('2 minutes'),ctrl.getUnitsList);
     
     app.route(`/api/collection`)
-       .post(apiCache('2 minutes'),ctrl.createCollection);
+       .post(ctrl.createCollection);
 };
