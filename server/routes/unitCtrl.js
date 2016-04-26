@@ -16,7 +16,7 @@ module.exports = {
                 if (err) {
                     res.status( 500 ).send( err );
                 }
-                    console.log( UnitsList );
+                    
                     res.send( UnitsList );
 
             });
