@@ -4,7 +4,20 @@ angular.module('dataGrow').controller('activeUnitsCtrl', ['$scope', 'websocketSe
   // $scope.ActiveUnits = [];
   // $scope.UnitId;
 
+  //.populate
+
   $scope.allUnits = allUnits;
+
+ //  	hey asshole, use this for websockets
+ //  	websocketService.startWs();
+
+	// $scope.websocketUpdate = {};
+
+	// 	window.setInterval(function() {
+	// 	$scope.websocketUpdate = websocketService.getUpdate();
+	// 	console.log($scope.websocketUpdate);
+	// },2000);
+  
 
 }]);
 
