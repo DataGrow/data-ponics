@@ -3,10 +3,7 @@
 
 body {
   font-family: "Raleway", Frutiger, "Frutiger Linotype", Univers, Calibri, "Gill Sans", "Gill Sans MT", "Myriad Pro", Myriad, "DejaVu Sans Condensed", "Liberation Sans", "Nimbus Sans L", Tahoma, Geneva, "Helvetica Neue", Helvetica, Arial, sans-serif;
-<<<<<<< HEAD
   background-color: #d8d8d8;
-=======
->>>>>>> controllersBranch
 }
 
 /** {
@@ -141,12 +138,8 @@ body {
 /*make menu-toggle visible on small screens*/
 #menu-toggle {
   display:none;
-<<<<<<< HEAD
   font-size:36px;
 
-=======
-  font-size:48px;
->>>>>>> controllersBranch
 }
 
 @media(max-width:768px) {
@@ -155,7 +148,6 @@ body {
   }
 }
 
-<<<<<<< HEAD
 /*TOP NAV BAR*/
 .dashboard-nav {
   /*background:#385d8c;*/
@@ -188,10 +180,6 @@ body {
     font-size:4em;
 }
 
-=======
-/*ACTIVE UNITS VIEW*/
-
->>>>>>> controllersBranch
 .unit-contain {
   padding-left:0;
   padding-right:0;
@@ -202,7 +190,6 @@ body {
 }
 
 .unit-content {
-<<<<<<< HEAD
   /*border: 2px solid #3a3a3a;*/
   min-height:300px;
   padding: 10px;
@@ -244,17 +231,3 @@ body {
   font-weight:bolder;
   text-align:right;
 }
-=======
-  border: 1px solid black;
-  min-height:300px;
-  padding: 10px;
-}
-
-.data-stream {
-  border: 1px solid black;
-  height:auto;
-  padding-left:10px;
-  background-color:black;
-  color:white;
-}
->>>>>>> controllersBranch
