@@ -46,4 +46,6 @@ angular.module('dataGrow')
   // $scope.sendData = function() {
   // 	return ws.send(data);
   // }
+
+  
 }]);

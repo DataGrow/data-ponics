@@ -15,12 +15,14 @@ angular.module('dataGrow')
 			})
 		};
 
-	allUnits = function() {
+	getAllUnits = function() {
 		return $http.get('/api/units/');
+
 	}
 
 	UnitId = function() {
 		return $http.get('/api/unit/:unitId');
+		console.log([Unit.day[1].hour[1].data[1]]);
 	}
 	// this.getArchivedData = function() {
 	// 	return $http.get(unit.data) 
