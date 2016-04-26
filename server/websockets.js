@@ -9,18 +9,22 @@ let Unit01 = new UnitClass( "571aaa4cc1b68a6a189305a1", "Unit Prime", "weed" );
 
 wss.on('connection', function connection(ws) {
 
+  wss.broadcast = function broadcast(data) {
+    wss.clients.forEach(function each(client) {
+      client.send(data);
+    });
+  };
   
   ws.on('message', function incoming(newReadings) {
-    
-    //broadcast stringifyed live data to clients
-    ws.broadcast(newReadings);
 
+    //broadcast stringifyed live data to clients
+    wss.broadcast(newReadings);
+    
     //parse JSON data
     newReadings = JSON.parse(newReadings);
     
-    
-    
+    //Adding data to local server cache
+    Unit01.cacheDataPoint(newReadings);
   });
     
 });
-
