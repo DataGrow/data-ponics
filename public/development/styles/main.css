@@ -1,6 +1,15 @@
-#testing-style {
-  color: green;
+/*FONT*/
+@import url(https://fonts.googleapis.com/css?family=Raleway:200);
+
+body {
+  font-family: "Raleway", Frutiger, "Frutiger Linotype", Univers, Calibri, "Gill Sans", "Gill Sans MT", "Myriad Pro", Myriad, "DejaVu Sans Condensed", "Liberation Sans", "Nimbus Sans L", Tahoma, Geneva, "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
+
+/** {
+  box-sizing:border-box;
+}*/
+
+/*SIDEBAR*/
 
 #wrapper {
     padding-left: 0;
@@ -118,4 +127,41 @@
         position: relative;
         margin-right: 0;
     }
+}
+
+/*make menu-toggle visible on small screens*/
+#menu-toggle {
+  display:none;
+  font-size:48px;
+}
+
+@media(max-width:768px) {
+  #menu-toggle {
+    display:inline-block;
+  }
+}
+
+/*ACTIVE UNITS VIEW*/
+
+.unit-contain {
+  padding-left:0;
+  padding-right:0;
+}
+
+.unit-wrapper {
+  padding:15px;
+}
+
+.unit-content {
+  border: 1px solid black;
+  min-height:300px;
+  padding: 10px;
+}
+
+.data-stream {
+  border: 1px solid black;
+  height:auto;
+  padding-left:10px;
+  background-color:black;
+  color:white;
 }
