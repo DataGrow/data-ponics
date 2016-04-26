@@ -39,7 +39,6 @@ module.exports = {
             )
         })            
     },
-
     getUnit: function(req, res) {
         Unit.findById(req.params.unitId)
             .then(function(err, queriedUnit) {
@@ -61,15 +60,6 @@ module.exports = {
                     res.status(201).send(JSON.stringified("Unit Removed"));
             })
     },
-
-
-
-
-
-
-
-
-
 
     createCollection: function(req, res) {
         UserCollection.create(req.body).then(function(err, Collection) {
