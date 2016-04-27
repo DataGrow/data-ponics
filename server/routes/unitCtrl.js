@@ -21,6 +21,18 @@ module.exports = {
             });
     },
 
+    getArchiveUnitsList: function( req, res ) {
+        UserCollection
+            .findOne( {}, 'archivedUnits' )
+            .populate('archivedUnits')
+            .then( function( err, archiveUnits ) {
+                if (err) {
+                    return res.status(500).send(err);
+                }
+                res.send( archiveUnits )
+            })
+    },
+
     createUnit: function(req, res) {
         new Unit(req.body).save( function(err, newUnit) {
             //add newUnit to the users collection of active units
