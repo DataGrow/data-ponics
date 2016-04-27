@@ -9,11 +9,16 @@ let ctrl = require('./unitCtrl'),
 module.exports = function( app ) {
     
     app.route(`/api/unit/:unitId`)
-        .get(ctrl.getUnit)
-        .delete(ctrl.deleteUnit);
+        .get(apiCache('2 minutes'), ctrl.getUnit)
+        .delete(ctrl.decNumActiveUnits, ctrl.removeUnitFromUser, ctrl.deleteUnit);
 
     app.route(`/api/unit/`)
-        .post(ctrl.createUnit);
+        .post( ctrl.incNumActiveUnits, ctrl.createUnit);
+    
+    app.route(`/api/archive`)
+        .get(ctrl.getArchiveUnitsList)
+        .post(ctrl.incNumArchiveUnits, ctrl.createArchiveUnit);
+
     
     app.route(`/api/unitsList`)
         .get(apiCache('2 minutes'),ctrl.getUnitsList);
