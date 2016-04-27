@@ -5,3 +5,7 @@ node_modules
 .idea
 
 .babelrc
+
+bower_components
+
+angular-ws
