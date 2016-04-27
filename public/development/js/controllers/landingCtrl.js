@@ -1,10 +1,9 @@
 angular.module('dataGrow')
 .controller('landingCtrl', function($scope, $rootScope, unitInfoService, websocketService) {
 
-	websocketService.startWs();
-
-	//$scope.unitsList = ArchivedUnit;
-	$scope.websocketUpdate = {};
+	// websocketService.startWs();
+	//
+	// $rootScope.websocketUpdate = {};
 
 	$scope.getUnitsList = function() {
 		unitInfoService.getAllUnits().then (
@@ -18,9 +17,9 @@ angular.module('dataGrow')
 
 	$scope.getUnitsList();
 
-	window.setInterval(function() {
-		$scope.websocketUpdate = websocketService.getUpdate();
-		// console.log($scope.websocketUpdate);
-	},2000);
+	// window.setInterval(function() {
+	// 	$rootScope.websocketUpdate = websocketService.getUpdate();
+	// 	// console.log($scope.websocketUpdate);
+	// },2000);
 
 });
