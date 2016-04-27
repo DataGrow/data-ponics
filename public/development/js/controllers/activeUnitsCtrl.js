@@ -1,48 +1,14 @@
-<<<<<<< HEAD
-angular.module('dataGrow').controller('activeUnitsCtrl', ['$scope', '$rootScope', 'websocketService', function($scope, $rootScope, websocketService, ActiveUnits) {
-	//overview ctrl
-  $scope.allUnits = allUnits;
-
-  $scope.unit.name = unit.name;
-  $scope.unit.product = unit.product;
-  $scope.unit.day = unit.day;
-
-   //hey asshole, use this for websockets
-    websocketService.startWs();
-
-	$scope.websocketUpdate = {};
-=======
 angular.module('dataGrow').controller('activeUnitsCtrl', ['$scope', '$rootScope', 'unitInfoService', 'websocketService', function($scope, $rootScope, unitInfoService, websocketService) {
 
  //  	use this for websockets
  //  	websocketService.startWs();
->>>>>>> master
 
-	$scope.getUnitData = function() {
-		unitInfoService.getData().then (
-			function(response) {
-				$rootScope.activeUnits = response.data;
-				$scope.Data.push($scope.UnitId)
-        			return UnitId.data;
-    		});
-	};
-	
+	// $scope.websocketUpdate = {};
 
-<<<<<<< HEAD
-	window.setInterval(function() {
-	 $scope.websocketUpdate = websocketService.getUpdate();
-		console.log($scope.websocketUpdate);
-	},2000);
-
-	
-  
-=======
 	// 	window.setInterval(function() {
 	// 	$scope.websocketUpdate = websocketService.getUpdate();
 	// 	console.log($scope.websocketUpdate);
 	// },2000);
->>>>>>> master
-
 
 }]);
 
