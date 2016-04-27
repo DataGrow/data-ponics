@@ -13,7 +13,7 @@ module.exports = {
         UserCollection
             .findOne( {}, "units" )
             .populate('units')
-            .then( function(err, UnitsList) {                
+            .exec( function(err, UnitsList) {                
                 if (err) {
                     res.status( 500 ).send( err );
                 }
@@ -25,7 +25,7 @@ module.exports = {
         UserCollection
             .findOne( {}, 'archivedUnits' )
             .populate('archivedUnits')
-            .then( function( err, archiveUnits ) {
+            .exec( function( err, archiveUnits ) {
                 if (err) {
                     return res.status(500).send(err);
                 }
@@ -49,6 +49,17 @@ module.exports = {
             )
         })            
     },
+
+    incNumActiveUnits: function ( req, res, next ) {
+        UserCollection.findByIdAndUpdate(
+            userCollectionId,
+            { $inc: { numActiveUnits : 1 }},
+            function( err, updatedUser) {
+                next();
+            }
+        )
+    },
+
     getUnit: function(req, res) {
         Unit.findById(req.params.unitId)
             .then(function(err, queriedUnit) {
@@ -79,13 +90,23 @@ module.exports = {
     },
 
     deleteUnit: function(req, res) {
-        Unit.findByIdandRemove(req.params.unitId)
+        Unit.findByIdAndRemove(req.params.unitId)
             .then(function(err, removedUnit) {
                 if(err)
                     res.status(300).send(err);
                 else
                     res.status(201).send(JSON.stringified("Unit Removed"));
             })
+    },
+
+    decNumActiveUnits: function ( req, res, next ) {
+        UserCollection.findByIdAndUpdate(
+            userCollectionId,
+            { $inc: { numActiveUnits : -1 }},
+            function( err, updatedUser) {
+                next();
+            }
+        )
     },
 
     createCollection: function(req, res) {

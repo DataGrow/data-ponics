@@ -10,10 +10,10 @@ module.exports = function( app ) {
     
     app.route(`/api/unit/:unitId`)
         .get(ctrl.getUnit)
-        .delete(ctrl.deleteUnit);
+        .delete(ctrl.decNumActiveUnits, ctrl.deleteUnit);
 
     app.route(`/api/unit/`)
-        .post(apiCache('2 minutes'),ctrl.createUnit);
+        .post(apiCache('2 minutes'), ctrl.incNumActiveUnits, ctrl.createUnit);
     
     app.route(`/api/archive`)
         .get(ctrl.getArchiveUnitsList)
