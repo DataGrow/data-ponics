@@ -231,3 +231,13 @@ body {
   font-weight:bolder;
   text-align:right;
 }
+
+.panel {
+  margin-top: 100px;
+}
+
+.thumbnail img{
+  height: 220px;
+  width: 250px;
+
+}

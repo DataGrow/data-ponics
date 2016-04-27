@@ -42,5 +42,9 @@ angular.module('dataGrow', ['ui.router', 'ws'])
 					templateUrl: './development/partials/archived-unit-info.html',
 					controller: 'archivedUnitInfoCtrl'
 				})
+				.state('about', {
+					url: '/about',
+					templateUrl:'./development/partials/about.html'
+				})
 
     });
