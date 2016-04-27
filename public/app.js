@@ -21,7 +21,7 @@ angular.module('dataGrow', ['ui.router', 'ws'])
 					url: '/unit/active/:unitId',
 					templateUrl: './development/partials/active-unit-info.html',
 					controller: 'activeUnitInfoCtrl',
-					params: {unitId: '571fd28f538ab58910029fca'},
+					params: {unitId: null},
 					resolve: {
 	          activeUnit: ['unitInfoService', '$stateParams', function(unitInfoService, $stateParams){
 	            return unitInfoService.getUnit($stateParams.unitId);
