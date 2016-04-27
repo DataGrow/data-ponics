@@ -17,9 +17,7 @@ module.exports = {
                 if (err) {
                     res.status( 500 ).send( err );
                 }
-                    
                     res.send( UnitsList );
-
             });
     },
 
@@ -52,18 +50,17 @@ module.exports = {
     },
     
     createArchiveUnit: function( req, res ) {
-        new Archive(req.body).save( function(err, newUnit) {
+        new Archive( req.body ).save( function( err, newUnit ) {
             //add newUnit to the users collection of active units
             UserCollection.findByIdAndUpdate(
                 userCollectionId,
-                {$addToSet: {units: newUnit._id}},
+                {$addToSet: {archivedUnits: newUnit._id}},
                 {safe: true, upsert: true, new: true},
-                function(err, updatedCollection) {
-
-                    if(err)
-                        res.status(300).send(err);
+                function( err, updatedCollection ) {
+                    if( err )
+                        res.status( 300 ).send( err );
                     else
-                        res.status(201).send(updatedCollection.units);
+                        res.status( 201 ).send( updatedCollection.units );
                 }
             )
         })
