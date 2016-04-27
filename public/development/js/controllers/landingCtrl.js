@@ -5,7 +5,7 @@ angular.module('dataGrow')
 
 	//$scope.unitsList = ArchivedUnit;
 	$scope.websocketUpdate = {};
-	
+
 	$scope.getUnitsList = function() {
 		unitInfoService.getAllUnits().then (
 				function(response) {
@@ -20,7 +20,7 @@ angular.module('dataGrow')
 
 	window.setInterval(function() {
 		$scope.websocketUpdate = websocketService.getUpdate();
-		console.log($scope.websocketUpdate);
+		// console.log($scope.websocketUpdate);
 	},2000);
-	
+
 });

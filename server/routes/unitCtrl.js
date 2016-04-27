@@ -8,13 +8,13 @@ let Archive = require('../models/ArchiveUnitSchema'),
 let userCollectionId = "571e7669be6a90ca040bae04";
 
 module.exports = {
-    
-    getUnitsList: function(req, res) {        
+
+    getUnitsList: function(req, res) {
         UserCollection
             .findOne( {} )
             .populate( "units" )
-            .exec( function(err, userCollection) {                
-                if (err) 
+            .exec( function(err, userCollection) {
+                if (err)
                     res.status( 500 ).send( err );
                 else
                     res.send( userCollection.units );
@@ -25,23 +25,23 @@ module.exports = {
         Unit.create(req.body, function(err, newUnit) {
             //add newUnit to the users collection of active units
             UserCollection.findByIdAndUpdate(
-                userCollectionId,    
+                userCollectionId,
                 {$addToSet: {units: newUnit._id}},
-                {safe: true, upsert: true, new: true}, 
+                {safe: true, upsert: true, new: true},
                 function(err, updatedCollection) {
-                    console.log(updatedCollection);                        
-                    if(err) 
+                    console.log(updatedCollection);
+                    if(err)
                         res.status(300).send(err);
                     else
                         res.status(201).send(updatedCollection.units);
                 }
             )
-        })            
+        })
     },
     getUnit: function(req, res) {
-        Unit.findById(req.params.unitId)
-            .then(function(err, queriedUnit) {
+        Unit.findById(req.params.unitId, function(err, queriedUnit) {
                 if(err) {
+                    console.log(err);
                     res.status( 300 ).send( err );
                 }
                 else {
@@ -62,11 +62,11 @@ module.exports = {
 
     createCollection: function(req, res) {
         UserCollection.create(req.body).then(function(err, Collection) {
-            if(err) 
+            if(err)
                 res.status(300).send(err);
             else
                 res.status(200).send(Collection);
-        })     
-    }   
-    
+        })
+    }
+
 };

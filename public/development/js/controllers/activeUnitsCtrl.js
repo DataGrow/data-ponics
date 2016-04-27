@@ -1,14 +1,6 @@
-angular.module('dataGrow').controller('activeUnitsCtrl', ['$scope', 'websocketService', function($scope, websocketService, ActiveUnits) {
-	//overview ctrl
-  
-  // $scope.ActiveUnits = [];
-  // $scope.UnitId;
+angular.module('dataGrow').controller('activeUnitsCtrl', ['$scope', '$rootScope', 'unitInfoService', 'websocketService', function($scope, $rootScope, unitInfoService, websocketService) {
 
-  //.populate
-
-  $scope.allUnits = allUnits;
-
- //  	hey asshole, use this for websockets
+ //  	use this for websockets
  //  	websocketService.startWs();
 
 	// $scope.websocketUpdate = {};
@@ -17,13 +9,9 @@ angular.module('dataGrow').controller('activeUnitsCtrl', ['$scope', 'websocketSe
 	// 	$scope.websocketUpdate = websocketService.getUpdate();
 	// 	console.log($scope.websocketUpdate);
 	// },2000);
-  
 
 }]);
 
-//Get list of active units from server from /api/units/active (may need its own service)
+//Get list of active units from server from /api/units/active
 
-  //Get websocket data to display on each unit from websocketService
-
-
- 
+//Get websocket data to display on each unit from websocketService
