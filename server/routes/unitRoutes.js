@@ -13,13 +13,17 @@ module.exports = function( app ) {
         .delete(ctrl.decNumActiveUnits, ctrl.removeUnitFromUser, ctrl.deleteUnit);
 
     app.route(`/api/unit/`)
+<<<<<<< HEAD
         .post( ctrl.incNumActiveUnits, ctrl.createUnit);
     
     app.route(`/api/archive`)
         .get(ctrl.getArchiveUnitsList)
         .post(ctrl.incNumArchiveUnits, ctrl.createArchiveUnit);
+=======
+        .post(ctrl.createUnit);
+>>>>>>> df595e2629a4c3133df0e9e50205ac199394ba21
     
-    app.route(`/api/units`)
+    app.route(`/api/unitsList`)
         .get(apiCache('2 minutes'),ctrl.getUnitsList);
     
     app.route(`/api/collection`)

@@ -11,6 +11,7 @@ module.exports = {
     
     getUnitsList: function(req, res) {        
         UserCollection
+<<<<<<< HEAD
             .findOne( {}, "units" )
             .populate('units')
             .exec( function(err, UnitsList) {                
@@ -18,6 +19,15 @@ module.exports = {
                     res.status( 500 ).send( err );
                 }
                     res.send( UnitsList );
+=======
+            .findOne( {} )
+            .populate( "units" )
+            .exec( function(err, userCollection) {                
+                if (err) 
+                    res.status( 500 ).send( err );
+                else
+                    res.send( userCollection.units );
+>>>>>>> df595e2629a4c3133df0e9e50205ac199394ba21
             });
     },
 
@@ -34,9 +44,10 @@ module.exports = {
     },
 
     createUnit: function(req, res) {
-        new Unit(req.body).save( function(err, newUnit) {
+        Unit.create(req.body, function(err, newUnit) {
             //add newUnit to the users collection of active units
             UserCollection.findByIdAndUpdate(
+<<<<<<< HEAD
                     userCollectionId,    
                     {$addToSet: {units: newUnit._id}},
                     {safe: true, upsert: true, new: true}, 
@@ -46,6 +57,18 @@ module.exports = {
                         else
                             res.status(201).send(updatedCollection.units);
                     }
+=======
+                userCollectionId,    
+                {$addToSet: {units: newUnit._id}},
+                {safe: true, upsert: true, new: true}, 
+                function(err, updatedCollection) {
+                    console.log(updatedCollection);                        
+                    if(err) 
+                        res.status(300).send(err);
+                    else
+                        res.status(201).send(updatedCollection.units);
+                }
+>>>>>>> df595e2629a4c3133df0e9e50205ac199394ba21
             )
         })            
     },
@@ -136,7 +159,6 @@ module.exports = {
             else
                 res.status(200).send(Collection);
         })     
-    }
-    
+    }   
     
 };
