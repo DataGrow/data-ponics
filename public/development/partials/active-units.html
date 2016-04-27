@@ -24,8 +24,9 @@
                   <h4>&bull; {{activeUnits[i].product}}  &bull; </h4>
                 </div>
                 <div class="current-day">
-                  <h4>Day {{activeUnits[i].day.length}}</h4>
+                  <h4>Day {{activeUnits[i].day.length}}  &bull;</h4>
                 </div>
+                <a class="text-right" ui-sref='active-unit-info({unitId:activeUnits[i]._id})'><span class="glyphicon glyphicon-stats"></span></a>
               </div>
             </div>
             <div class="unit-wrapper col-lg-4 col-md-4 col-sm-6 col-xs-12">
