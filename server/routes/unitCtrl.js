@@ -89,6 +89,16 @@ module.exports = {
         })
     },
 
+    incNumArchiveUnits: function ( req, res, next ) {
+        UserCollection.findByIdAndUpdate(
+            userCollectionId,
+            { $inc: { numArchiveUnits : 1 }},
+            function( err, updatedUser) {
+                next();
+            }
+        )
+    },
+
     deleteUnit: function(req, res) {
         Unit.findByIdAndRemove(req.params.unitId)
             .then(function(err, removedUnit) {
@@ -97,6 +107,16 @@ module.exports = {
                 else
                     res.status(201).send(JSON.stringified("Unit Removed"));
             })
+    },
+
+    removeUnitFromUser: function( req, res, next ) {
+        UserCollection.findByIdAndUpdate(
+            userCollectionId,
+            { $pull : { units: req.params.unitId }},
+            function( err, updatedCollection ) {
+                next();
+            }
+        )
     },
 
     decNumActiveUnits: function ( req, res, next ) {
