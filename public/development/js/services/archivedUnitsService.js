@@ -6,4 +6,4 @@ angular.module('dataGrow')
 			return response;
 		});
 	}
-}
+});
