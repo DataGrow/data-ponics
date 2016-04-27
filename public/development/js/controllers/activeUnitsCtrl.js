@@ -17,9 +17,9 @@ angular.module('dataGrow').controller('activeUnitsCtrl', ['$scope', '$rootScope'
 				$rootScope.activeUnits = response.data;
 				$scope.Data.push($scope.UnitId)
         			return UnitId.data;
-    			});
-			};
-	}
+    		});
+	};
+	
 
 	window.setInterval(function() {
 	 $scope.websocketUpdate = websocketService.getUpdate();

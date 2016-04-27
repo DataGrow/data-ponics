@@ -35,7 +35,12 @@ angular.module('dataGrow', ['ui.router', 'ws'])
 				.state('archived-units', {
 		            url: '/units/archived',
 		            templateUrl: './development/partials/archived-units.html',
-		            controller: 'arcvhivedUnitsCtrl'
+		            controller: 'archivedUnitsCtrl',
+		            resolve: {
+						ActiveUnitsInfo: function(archivedUnitsService) {
+							return archivedUnitsService.getArchivedUnits();
+						}
+					}
 		        })
 				.state('archived-unit-info', {
 					url: '/unit/archive/:unitId',
