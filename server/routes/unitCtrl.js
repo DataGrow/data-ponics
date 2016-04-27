@@ -12,6 +12,7 @@ module.exports = {
     getUnitsList: function(req, res) {        
         UserCollection
             .findOne( {}, "units" )
+            .populate('units')
             .then( function(err, UnitsList) {                
                 if (err) {
                     res.status( 500 ).send( err );
@@ -30,8 +31,7 @@ module.exports = {
                     {$addToSet: {units: newUnit._id}},
                     {safe: true, upsert: true, new: true}, 
                     function(err, updatedCollection) {
-                        console.log(updatedCollection);                        
-                        if(err) 
+                        if(err)
                             res.status(300).send(err);
                         else
                             res.status(201).send(updatedCollection.units);
@@ -49,6 +49,24 @@ module.exports = {
                     res.status( 201 ).send( queriedUnit );
                 }
             })
+    },
+    
+    createArchiveUnit: function( req, res ) {
+        new Archive(req.body).save( function(err, newUnit) {
+            //add newUnit to the users collection of active units
+            UserCollection.findByIdAndUpdate(
+                userCollectionId,
+                {$addToSet: {units: newUnit._id}},
+                {safe: true, upsert: true, new: true},
+                function(err, updatedCollection) {
+
+                    if(err)
+                        res.status(300).send(err);
+                    else
+                        res.status(201).send(updatedCollection.units);
+                }
+            )
+        })
     },
 
     deleteUnit: function(req, res) {
