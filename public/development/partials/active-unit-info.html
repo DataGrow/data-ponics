@@ -2,14 +2,23 @@
 <div id="wrapper">
   <side-bar></side-bar>
   <div id="page-content-wrapper">
-    <div class="header-img">
-      <h1>{{unit.name}}</h1>
-      <h3> {{unit.product}} </h3>
+    <div class="head container">
+      <h1>{{unit.name}} - {{unit.product}}</h1>
+      <h3> Collected data from the past {{unit.day.length}} day(s) </h3>
     </div>
-    <div class="container-fluid">
-      <div class="row">
-        <div class="unit-contain col-lg-12 col-md-12 col-sm-12 col-xs-12">
-
+    <div class="container">
+      <div class="unit-info-contain col-lg-10 col-md-10 col-sm-10 col-xs-12">
+        <div class="btn-group btn-group-justified" role="group" aria-label="...">
+         <a ng-click="showLight=true; showAir=false; showHum=false; showWat=false" type="button" class="btn btn-default">Light</a>
+         <a ng-click="showLight=false; showAir=true; showHum=false; showWat=false" type="button" class="btn btn-default">Air Temp</a>
+         <a ng-click="showLight=false; showAir=false; showHum=true; showWat=false" type="button" class="btn btn-default">Humidity</a>
+         <a ng-click="showLight=false; showAir=false; showHum=false; showWat=true" type="button" class="btn btn-default">Water</a>
+        </div>
+        <div class="d3-directive-contain">
+          <div ng-show="showLight" ng-hide="!showLight" class="sample-graph">light graph</div>
+          <div ng-show="showAir" ng-hide="!showAir"class="sample-graph">air temp graph</div>
+          <div ng-show="showHum" ng-hide="!showHum" class="sample-graph">humidity graph</div>
+          <div ng-show="showWat" ng-hide="!showWat"class="sample-graph">water temp graph</div>
         </div>
       </div>
     </div>
