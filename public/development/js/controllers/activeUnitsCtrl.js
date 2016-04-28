@@ -7,7 +7,6 @@ angular.module('dataGrow').controller('activeUnitsCtrl', ['$scope', '$rootScope'
 
 		window.setInterval(function() {
 		$scope.websocketUpdate = websocketService.getUpdate();
-		console.log($scope.websocketUpdate);
 	},2000);
 
   $scope.activeUnits = $rootScope.activeUnits;
