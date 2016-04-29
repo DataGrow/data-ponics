@@ -22,6 +22,12 @@ body {
     -moz-transition: all 0.5s ease;
     -o-transition: all 0.5s ease;
     transition: all 0.5s ease;
+    /*background: url("../images/hydroponic-spinach-plant-care-min.jpg")
+    no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;*/
 }
 
 #wrapper.toggled {
@@ -51,8 +57,15 @@ body {
 #page-content-wrapper {
     width: 100%;
     position: absolute;
-    padding: 15px;
+    padding: 0;
     top:50px;
+
+    /*background: url("../images/hydroponic-spinach-plant-care-min.jpg")
+    no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;*/
 }
 
 #wrapper.toggled #page-content-wrapper {
@@ -129,7 +142,7 @@ body {
     }
 
     #page-content-wrapper {
-        padding: 0 20px 20px 20px;
+        padding: 0 0 20px 20px;
         position: relative;
     }
 
@@ -158,7 +171,7 @@ body {
   /*background: #2998fa;*/
   /*background:#385d8c;*/
   border-bottom: 1px solid #3a3a3a;
-  height
+  margin-bottom:0;
 }
 
 .dashboard-nav .navbar-brand {
@@ -171,27 +184,47 @@ body {
 /*ACTIVE UNITS VIEW*/
 
 .header-img {
-  width:100%;
-  height:auto;
+
   margin-left:-20px;
-  margin-right:-20px;
-  padding-left: 40px;
+  padding-top:0;
+  margin-bottom:10px;
+  color:white;
+  background: url("../images/hydroponic-spinach-plant-care-min.jpg")
+  no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  -webkit-box-shadow: 10px 10px 5px 0px rgba(58,58,58,1);
+  -moz-box-shadow: 10px 10px 5px 0px rgba(58,58,58,1);
+  box-shadow: 10px 10px 5px 0px rgba(58,58,58,1);
+  border-bottom:1px solid white;
+  border-left: 1px solid white;
+}
+
+.header-txt {
+    background: rgba(0, 0, 0, 0.4);
+    padding-left:40px;
 }
 
 .header-img h1 {
     font-weight: 400;
     font-size:4em;
     margin-bottom:2px;
+    margin-top:0px;
+    padding-top:10px;
 }
 .header-img h3 {
     font-weight: 200;
     font-size:2em;
-    margin-top: 0px
+    margin-top: 0px;
+    margin-bottom:0px;
+    padding-bottom:10px;
 }
 
 .unit-contain {
   padding-left:0;
-  padding-right:0;
+  padding-right:20px;
 }
 
 .unit-wrapper {
