@@ -1,10 +1,13 @@
 /*FONT*/
 @import url(https://fonts.googleapis.com/css?family=Raleway:200);
-/*@import url(https://fonts.googleapis.com/css?family=Raleway:400);*/
+@import url(https://fonts.googleapis.com/css?family=Raleway:400);
+@import url(https://fonts.googleapis.com/css?family=Raleway:700);
+@import url(https://fonts.googleapis.com/css?family=Raleway:900);
 
 body {
   font-family: "Raleway", Frutiger, "Frutiger Linotype", Univers, Calibri, "Gill Sans", "Gill Sans MT", "Myriad Pro", Myriad, "DejaVu Sans Condensed", "Liberation Sans", "Nimbus Sans L", Tahoma, Geneva, "Helvetica Neue", Helvetica, Arial, sans-serif;
   background-color: #d8d8d8;
+
 }
 
 * {
@@ -70,7 +73,9 @@ body {
 
 .sidebar-nav li {
     text-indent: 20px;
-    line-height: 40px;
+    line-height: 50px;
+    font-weight:200;
+    font-size:1.5em;
 }
 
 .sidebar-nav li a {
@@ -92,15 +97,16 @@ body {
 
 .sidebar-nav > .sidebar-brand {
     height: 65px;
-    font-size: 18px;
+    font-size: 22px;
     line-height: 60px;
+    border-bottom:1px solid #59ad4b;
 }
 
 .sidebar-nav > .sidebar-brand a {
     color: white;
 }
 
-.sidebar-nav > .sidebar-brand a:hover {
+.sidebar-nav > .sidebar-brand:hover {
     color: #fff;
     background:#385d8c;
 }
@@ -116,7 +122,6 @@ body {
 
     #sidebar-wrapper {
         width: 250px;
-        border-top:5px solid #d8d8d8;
     }
 
     #wrapper.toggled #sidebar-wrapper {
@@ -126,7 +131,6 @@ body {
     #page-content-wrapper {
         padding: 0 20px 20px 20px;
         position: relative;
-        border-top:5px solid #3a3a3a;
     }
 
     #wrapper.toggled #page-content-wrapper {
@@ -153,15 +157,15 @@ body {
   background: #59ad4b;
   /*background: #2998fa;*/
   /*background:#385d8c;*/
-}
-
-.dashboard-nav a {
-  color:white;
+  border-bottom: 1px solid #3a3a3a;
+  height
 }
 
 .dashboard-nav .navbar-brand {
   padding-left: 20px;
-  font-weight:bolder;
+  font-weight:400;
+  color: white;
+  font-size:2.3em;
 }
 
 /*ACTIVE UNITS VIEW*/
@@ -175,8 +179,14 @@ body {
 }
 
 .header-img h1 {
-    font-weight: 900;
+    font-weight: 400;
     font-size:4em;
+    margin-bottom:2px;
+}
+.header-img h3 {
+    font-weight: 200;
+    font-size:2em;
+    margin-top: 0px
 }
 
 .unit-contain {
@@ -198,7 +208,7 @@ body {
 }
 
 .unit-content h3 {
-  font-weight:bolder;
+  font-weight:400;
   display:inline-block;
 }
 
@@ -209,6 +219,10 @@ body {
   padding-left:10px;
   background:#385d8c;
   color:white;
+}
+
+.data-stream h2 {
+  font-weight:200;
 }
 
 .unit-name {
@@ -228,8 +242,15 @@ body {
 /*ACTIVE UNIT INFO*/
 
 .head h1 {
-  font-weight: 900;
+  font-weight: 400;
   font-size:4em;
+  margin-bottom:2px;
+}
+
+.head h3 {
+  font-weight: 200;
+  font-size:2em;
+  margin-top: 0px
 }
 
 .unit-info-contain {
@@ -246,19 +267,20 @@ body {
   color:white;
   border-radius: 0;
   border:1px solid white;
+  font-weight:200;
 }
 
 .unit-info-contain a:hover {
   background: #59ad4b;
   color:white;
-  font-weight:bolder;
+  font-weight:400;
 }
 
 .unit-info-contain .active,
 .unit-info-contain .active:hover {
   background:white;
   border:none;
-  font-weight:900;
+  font-weight:700;
 }
 
 .d3-directive-contain {
@@ -271,6 +293,7 @@ body {
   /*text-align:center;*/
 }
 
+/*ABOUT PAGE*/
 .panel {
   margin-top: 100px;
 }
@@ -278,5 +301,73 @@ body {
 .thumbnail img{
   height: 200px;
   width: 225px;
+
+}
+
+/*LANDING PAGE*/
+.landing-contain {
+  background: url("../images/hydroponic-spinach-plant-care-min.jpg")
+  no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  height:100vh;
+}
+
+.landing-header {
+  color:white;
+  width:100vw;
+  background: rgba(0, 0, 0, 0.6);
+  border-top: 1px solid white;
+  border-bottom: 1px solid white;
+  position:absolute;
+  top:30;
+  padding-bottom:20px;
+}
+
+.title {
+  font-size:5em;
+  font-weight:400;
+  margin-top:10px;
+  display:inline-block;
+}
+
+.tag-line {
+  font-size:3em;
+  font-weight:200;
+  margin-top:0px;
+  display:inline-block;
+  margin-bottom:0;
+}
+
+.landing-button {
+  border:1px solid white;
+  background: transparent;
+  color:white;
+  border-radius:0;
+  margin-top:20px;
+  width:100%;
+}
+
+@media(max-width:1160px) {
+  .tag-line {
+    font-size:2.5em;
+  }
+}
+
+@media(max-width:768px) {
+  .tag-line {
+    margin-bottom:0;
+  }
+}
+
+@media(max-width:570px){
+  .title {
+    font-size:4em;
+  }
+  .tag-line {
+    font-size:1.7em;
+  }
 
 }
