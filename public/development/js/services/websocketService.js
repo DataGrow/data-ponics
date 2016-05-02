@@ -14,10 +14,12 @@ angular.module('dataGrow').service('websocketService', function( $http, $q, $log
 
     var posOrNeg = function() {
     	return Math.random() <= .5 ? 1 : -1;
-    }
+    };
 
     this.startWs = function() {
     
+	  ws.getReadyState();	
+		
       ws.on('message', function (event) {
       	
 
@@ -39,7 +41,7 @@ angular.module('dataGrow').service('websocketService', function( $http, $q, $log
         ws.send(JSON.stringify(fakeData));
 
     },2000)  
-    }
+    };
 
     this.getUpdate = function() {
     	return lastUpdate;
