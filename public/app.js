@@ -2,7 +2,7 @@ angular.module('dataGrow', ['ui.router', 'ws'])
 
 	.config( function ($stateProvider, $urlRouterProvider, wsProvider ) {
 
-    wsProvider.setUrl('ws://echo.websocket.org');
+    wsProvider.setUrl('ws://dataponics.herokuapp.com');
 
     $urlRouterProvider.otherwise('/');
 
