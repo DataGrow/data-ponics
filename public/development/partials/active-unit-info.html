@@ -18,18 +18,28 @@
         </div>
         <div class="d3-directive-contain">
           <div ng-show="showLight" ng-hide="!showLight" class="sample-graph">
-
-            {{ unit }}
+            <!-- {{ allInfo }} -->
+            <!-- {{ unit }} -->
             <br>
             {{ unit.product }}
-
-        <svg id="visualisation" width="1000" height="500" class="chart"></svg>
-
-        
+            <svg id="visualisation" width="80%" height="80%" class="chart"></svg>
           </div>
-          <div ng-show="showAir" ng-hide="!showAir"class="sample-graph">air temp graph</div>
-          <div ng-show="showHum" ng-hide="!showHum" class="sample-graph">humidity graph</div>
-          <div ng-show="showWat" ng-hide="!showWat"class="sample-graph">water temp graph</div>
+
+          <div ng-show="showAir" ng-hide="!showAir"class="sample-graph"><br>
+            {{ unit.product }}
+            <svg id="airvisualisation" width="80%" height="80%" class="chart"></svg>
+          </div>
+
+          <div ng-show="showHum" ng-hide="!showHum" class="sample-graph"><br>
+            {{ unit.product }}
+            <svg id="humidityvisualisation" width="80%" height="80%" class="chart"></svg>
+          </div>
+
+          <div ng-show="showWat" ng-hide="!showWat"class="sample-graph"><br>
+            {{ unit.product }}
+            <svg id="watervisualisation" width="80%" height="80%" class="chart"></svg>
+          </div>
+
         </div>
       </div>
     </div>
