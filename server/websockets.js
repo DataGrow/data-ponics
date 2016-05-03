@@ -28,7 +28,7 @@ wss.on('connection', function connection(ws) {
   });
     
 });
-//
+
 // let Unit = require('./models/UnitSchema')
 //
 // setInterval (function() {
@@ -36,7 +36,7 @@ wss.on('connection', function connection(ws) {
 //
 //
 //   function pushToDB(avgData) {
-//     Unit.findById('571fd58d5110c15712568a0a', function(err, queriedUnit) {
+//     Unit.findById('571fd6268513cfda125a813a', function(err, queriedUnit) {
 //       //get all arrays
 //       var dayArr = queriedUnit.day;
 //       var hourArr = dayArr[dayArr.length-1].hour;
@@ -67,4 +67,4 @@ wss.on('connection', function connection(ws) {
 //   light : Math.floor(Math.random() * 1001) } );
 //
 //
-// },750);
+// },1000);
