@@ -1,13 +1,13 @@
 angular.module('dataGrow').controller('activeUnitsCtrl', ['$scope', '$rootScope', 'unitInfoService', 'websocketService', function($scope, $rootScope, unitInfoService, websocketService) {
 
  // websockets
+    $scope.websocketUpdate = {};
   websocketService.startWs();
-
-	$scope.websocketUpdate = {};
+	
 
 		window.setInterval(function() {
 		$scope.websocketUpdate = websocketService.getUpdate();
-	},2000);
+	},3000);
 
   $scope.activeUnits = $rootScope.activeUnits;
 
