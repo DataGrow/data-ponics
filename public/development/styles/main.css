@@ -6,7 +6,7 @@
 
 body {
   font-family: "Raleway", Frutiger, "Frutiger Linotype", Univers, Calibri, "Gill Sans", "Gill Sans MT", "Myriad Pro", Myriad, "DejaVu Sans Condensed", "Liberation Sans", "Nimbus Sans L", Tahoma, Geneva, "Helvetica Neue", Helvetica, Arial, sans-serif;
-  background-color: #d8d8d8;
+  background-color: #bfbfbf;
 
 }
 
@@ -38,12 +38,12 @@ body {
     z-index: 1000;
     position: fixed;
     left: 250px;
-    top:50px;
+    top:70px;
     width: 0;
     height: 100%;
     margin-left: -250px;
     overflow-y: auto;
-    background: #3a3a3a;
+    background: #262626;
     -webkit-transition: all 0.5s ease;
     -moz-transition: all 0.5s ease;
     -o-transition: all 0.5s ease;
@@ -59,7 +59,7 @@ body {
     width: 100%;
     position: absolute;
     padding: 0;
-    top:50px;
+    top:70px;
 
     /*background: url("../images/hydroponic-spinach-plant-care-min.jpg")
     no-repeat center center fixed;
@@ -87,9 +87,9 @@ body {
 
 .sidebar-nav li {
     text-indent: 20px;
-    line-height: 50px;
+    line-height: 40px;
     font-weight:200;
-    font-size:1.5em;
+    font-size:1.3em;
 }
 
 .sidebar-nav li a {
@@ -110,19 +110,27 @@ body {
 }
 
 .sidebar-nav > .sidebar-brand {
-    height: 65px;
-    font-size: 22px;
-    line-height: 60px;
-    border-bottom:1px solid #59ad4b;
+    height: 50px;
+    font-size: 1.4em;
+    line-height: 50px;
+    border-bottom:1px solid #209305;
 }
 
 .sidebar-nav > .sidebar-brand a {
-    color: white;
+    color:white;
 }
 
 .sidebar-nav > .sidebar-brand:hover {
     color: #fff;
     background:#385d8c;
+}
+
+.sidebar-brand img {
+  height: auto;
+  width: 35px;
+  border-radius: 50px;
+  margin-left:2px;
+  border:2px solid black;
 }
 
 @media(min-width:768px) {
@@ -157,29 +165,63 @@ body {
 #menu-toggle {
   display:none;
   font-size:36px;
-
+  color:#209305;
 }
 
 @media(max-width:768px) {
   #menu-toggle {
     display:inline-block;
   }
+  .brand-hold {
+    position:absolute;
+    top:25;
+    left:10;
+  }
+  #sidebar-wrapper {
+    border:none;
+  }
 }
 
 /*TOP NAV BAR*/
 .dashboard-nav {
-  background: #59ad4b;
+  /*background: #59ad4b;*/
   /*background: #2998fa;*/
   /*background:#385d8c;*/
   border-bottom: 1px solid white;
   margin-bottom:0;
+  /*background: url("../images/leaf_strip-min.jpg")
+  no-repeat center center local;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;*/
+  background: black;
+  padding-left:20px;
+  padding-bottom:10px;
+  padding-top:10px;
 }
 
 .dashboard-nav .navbar-brand {
-  padding-left: 20px;
-  font-weight:400;
+  font-weight:200;
   color: white;
-  font-size:2.3em;
+  font-size:1.6em;
+  text-shadow: 2px 2px black;
+}
+
+.brand-hold {
+  /*background:#209305;*/
+  padding:10px;
+  margin-bottom:15px;
+  margin-top:-10px;
+  border: 1px solid white;
+  background: url("../images/leaf_strip-min.jpg")
+  no-repeat center center local;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  border-radius:2px;
+
 }
 
 /*ACTIVE UNITS VIEW*/
@@ -200,11 +242,13 @@ body {
   -moz-box-shadow: 10px 10px 5px 0px rgba(58,58,58,1);
   box-shadow: 10px 10px 5px 0px rgba(58,58,58,1);
   border-bottom:1px solid white;
+  /*border-left:1px solid white;*/
 }
 
 .header-txt {
     background: rgba(0, 0, 0, 0.4);
     padding-left:40px;
+    text-shadow: 2px 2px black;
 }
 
 .header-img h1 {
@@ -216,7 +260,7 @@ body {
 }
 .header-img h3 {
     font-weight: 200;
-    font-size:2em;
+    font-size:1.7em;
     margin-top: 0px;
     margin-bottom:0px;
     padding-bottom:10px;
@@ -229,6 +273,8 @@ body {
 
 .unit-wrapper {
   padding:15px;
+  max-width:350px;
+  min-width:300px;
 }
 
 .unit-content {
@@ -238,38 +284,73 @@ body {
   -webkit-box-shadow: 10px 10px 5px 0px rgba(58,58,58,1);
   -moz-box-shadow: 10px 10px 5px 0px rgba(58,58,58,1);
   box-shadow: 10px 10px 5px 0px rgba(58,58,58,1);
+  text-align:left;
+  border-radius:5px;
+  border:1px solid #262626;
 }
 
 .unit-content h3 {
   font-weight:400;
   display:inline-block;
+  padding-left:10px;
 }
 
 
 .data-stream {
-  border: 1px solid #3a3a3a;
+  border-radius:5px;
+  border:1px solid black;
   height:auto;
-  padding-left:10px;
-  background:#385d8c;
+  /*padding-left:10px;*/
+  /*background:#385d8c;*/
   color:white;
+  background: url("../images/leaf_strip-min.jpg")
+  no-repeat center center local;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
 }
 
 .data-stream h2 {
   font-weight:200;
+  padding-left:10px;
+  text-shadow: 2px 2px black;
+}
+
+#first-measure {
+  margin-top:10px;
+}
+
+.img-mask {
+  background: rgba(0, 0, 0, 0.4);
+  padding-top:1px;
+  padding-bottom:1px;
 }
 
 .unit-name {
   display:inline-block;
+  padding-left:5px;
 }
 .plant-name {
   display:inline-block;
   font-weight:bolder;
+  font-size:1.7em;
+  padding-left:5px;
+  padding-top:5px;
 }
 
 .current-day {
   display:inline-block;
-  font-weight:bolder;
-  text-align:right;
+  float:right;
+  font-size:1.7em;
+  padding-right:5px;
+  padding-top:5px;
+}
+.unit-content hr {
+  margin:0 5px;
+}
+.unit-content p {
+  margin-bottom:0;
 }
 
 /*ACTIVE UNIT INFO*/

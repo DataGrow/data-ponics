@@ -8,27 +8,30 @@
       <h3>Streaming hydroponic sensor data. </h3>
       </div>
     </div>
-    <div class="container-fluid">
-      <div class="row">
+    <div class="container-fluid text-center">
+      <div class="row center-block">
         <div class="unit-contain col-lg-12 col-md-12 col-sm-12 col-xs-12">
           <div ng-repeat="(i, unit) in activeUnits track by $index" class="unit-wrapper col-lg-4 col-md-4 col-sm-6 col-xs-12">
             <div class="unit-content">
-              <div class="data-stream">
-                <h2>Light: {{websocketUpdate.lux}} lm</h2>
-                <h2>Air Temp: {{websocketUpdate.airTemp}}&deg;</h2>
-                <h2>Humidity: {{websocketUpdate.humidity}}%</h2>
-                <h2>Water Temp: {{websocketUpdate.waterTemp}}&deg;</h2>
-              </div>
-              <div class="unit-name">
-                <h3>{{activeUnits[i].name}} </h3>
-              </div>
+                <div class="data-stream">
+                  <div class="img-mask">
+                    <h2 id="first-measure">Light: {{websocketUpdate.lux}} lm</h2>
+                    <h2>Air Temp: {{websocketUpdate.airTemp}}&deg;</h2>
+                    <h2>Humidity: {{websocketUpdate.humidity}}%</h2>
+                    <h2>Water Temp: {{websocketUpdate.waterTemp}}&deg;</h2>
+                  </div>
+                </div>
+
               <div class="plant-name">
-                <h4>&bull; {{activeUnits[i].product}}  &bull; </h4>
+                <p>{{activeUnits[i].product}}</p>
               </div>
               <div class="current-day">
-                <h4>Day {{activeUnits[i].day.length}}  &bull;</h4>
+                <p>Day {{activeUnits[i].day.length}} <a ui-sref='active-unit-info({unitId:activeUnits[i]._id})'><span class="glyphicon glyphicon-stats"></span></a></p>
               </div>
-              <a class="text-right" ui-sref='active-unit-info({unitId:activeUnits[i]._id})'><span class="glyphicon glyphicon-stats"></span></a>
+              <hr>
+              <div class="unit-name">
+                <p>{{activeUnits[i].name}} </p>
+              </div>
             </div>
           </div>
         </div>
