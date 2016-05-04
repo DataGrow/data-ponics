@@ -22,12 +22,6 @@ body {
     -moz-transition: all 0.5s ease;
     -o-transition: all 0.5s ease;
     transition: all 0.5s ease;
-    /*background: url("../images/hydroponic-spinach-plant-care-min.jpg")
-    no-repeat center center fixed;
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
-    background-size: cover;*/
 }
 
 #wrapper.toggled {
@@ -60,13 +54,6 @@ body {
     position: absolute;
     padding: 0;
     top:70px;
-
-    /*background: url("../images/hydroponic-spinach-plant-care-min.jpg")
-    no-repeat center center fixed;
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
-    background-size: cover;*/
 }
 
 #wrapper.toggled #page-content-wrapper {
@@ -101,7 +88,7 @@ body {
 .sidebar-nav li a:hover {
     text-decoration: none;
     color: #fff;
-    background:#385d8c;
+    background:#209305;
 }
 
 .sidebar-nav li a:active,
@@ -122,7 +109,7 @@ body {
 
 .sidebar-nav > .sidebar-brand:hover {
     color: #fff;
-    background:#385d8c;
+    background:#209305;
 }
 
 .sidebar-brand img {
@@ -180,6 +167,9 @@ body {
   #sidebar-wrapper {
     border:none;
   }
+  .nav-tag {
+    display:none;
+  }
 }
 
 /*TOP NAV BAR*/
@@ -202,27 +192,28 @@ body {
 }
 
 .dashboard-nav .navbar-brand {
-  font-weight:200;
+  font-weight:400;
   color: white;
   font-size:1.6em;
   text-shadow: 2px 2px black;
 }
 
 .brand-hold {
-  /*background:#209305;*/
+  background:#209305;
   padding:10px;
   margin-bottom:15px;
   margin-top:-10px;
-  border: 1px solid white;
-  background: url("../images/leaf_strip-min.jpg")
-  no-repeat center center local;
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
-  background-size: cover;
-  border-radius:2px;
-
 }
+
+.nav-tag {
+  color:white;
+  font-size:1.6em;
+  font-weight:200;
+  padding-top:10px;
+  margin-bottom:0;
+  padding-right:30px;
+}
+
 
 /*ACTIVE UNITS VIEW*/
 
@@ -232,7 +223,7 @@ body {
   padding-top:0;
   margin-bottom:10px;
   color:white;
-  background: url("../images/hydroponic-spinach-plant-care-min.jpg")
+  background: url("../images/leaf_strip-min.jpg")
   no-repeat center center fixed;
   -webkit-background-size: cover;
   -moz-background-size: cover;
@@ -246,13 +237,13 @@ body {
 }
 
 .header-txt {
-    background: rgba(0, 0, 0, 0.4);
+    background: rgba(0, 0, 0, 0);
     padding-left:40px;
-    text-shadow: 2px 2px black;
+    text-shadow: 3px 3px black;
 }
 
 .header-img h1 {
-    font-weight: 400;
+    font-weight: 700;
     font-size:4em;
     margin-bottom:2px;
     margin-top:0px;
@@ -264,6 +255,7 @@ body {
     margin-top: 0px;
     margin-bottom:0px;
     padding-bottom:10px;
+    text-shadow: 2px 2px black;
 }
 
 .unit-contain {
@@ -300,10 +292,8 @@ body {
   border-radius:5px;
   border:1px solid black;
   height:auto;
-  /*padding-left:10px;*/
-  /*background:#385d8c;*/
   color:white;
-  background: url("../images/leaf_strip-min.jpg")
+  background: url("../images/hydro_plant-min.jpg")
   no-repeat center center local;
   -webkit-background-size: cover;
   -moz-background-size: cover;
@@ -322,7 +312,7 @@ body {
 }
 
 .img-mask {
-  background: rgba(0, 0, 0, 0.4);
+  background: rgba(0, 0, 0, 0.75);
   padding-top:1px;
   padding-bottom:1px;
 }
@@ -345,6 +335,10 @@ body {
   font-size:1.7em;
   padding-right:5px;
   padding-top:5px;
+}
+
+.current-day span {
+  color:#209305;
 }
 .unit-content hr {
   margin:0 5px;
@@ -369,15 +363,16 @@ body {
 
 .unit-info-contain {
   min-height:400px;
-  border:2px solid #385d8c;
+  border:2px solid #262626;
   padding:0;
+  margin-top:15px;
   -webkit-box-shadow: 10px 10px 5px 0px rgba(58,58,58,1);
   -moz-box-shadow: 10px 10px 5px 0px rgba(58,58,58,1);
   box-shadow: 10px 10px 5px 0px rgba(58,58,58,1);
 }
 
 .unit-info-contain a {
-  background:#385d8c;
+  background: #262626;
   color:white;
   border-radius: 0;
   border:1px solid white;
@@ -385,7 +380,7 @@ body {
 }
 
 .unit-info-contain a:hover {
-  background: #59ad4b;
+  background: #209305;
   color:white;
   font-weight:400;
 }
@@ -404,17 +399,31 @@ body {
 }
 
 .sample-graph {
-  /*text-align:center;*/
+  padding-left:80px;
+  padding-bottom:40px;
 }
 
 /*ABOUT PAGE*/
 .panel {
-  margin-top: 100px;
+  margin-top: 15px;
+  border-color:#262626;
+  -webkit-box-shadow: 10px 10px 5px 0px rgba(58,58,58,1);
+  -moz-box-shadow: 10px 10px 5px 0px rgba(58,58,58,1);
+  box-shadow: 10px 10px 5px 0px rgba(58,58,58,1);
 }
 
-.thumbnail img{
-  height: 200px;
-  width: 225px;
+.panel .panel-heading, .list-group .team-head {
+  background-color:#262626;
+  background-image: none;
+  font-weight:200;
+  font-size:1.2em;
+  color:white;
+}
+
+.thumbnail img {
+  max-width:240px;
+  max-height: 180px;
+  min-height:180px;
 
 }
 
@@ -500,7 +509,7 @@ body {
 
 /*D3 LINE GRAPH BELOW*/
 
-.chart {  
+.chart {
   font-family: 'Arial';
   font-size: 13px;
   color: #000;
@@ -512,7 +521,7 @@ body {
   stroke-width:2;
   shape-rendering: crispEdges;
 }
-.chart > .axis .tick line { 
+.chart > .axis .tick line {
   fill: none;
   stroke: #999;
   stroke-width:2;
@@ -523,7 +532,7 @@ body {
    stroke-linecap:round;
 }
 .chart > path.actual {
-   stroke: #91E500;
+   stroke: #209305;
    stroke-width:2;
    stroke-linecap:round;
    fill: none;
@@ -535,7 +544,7 @@ body {
 }
 
 /* For aesthetics only */
-        
+
 
 .intro h1 {
   font: 200 1.7em Segoe UI, "Segoe UI Light", "DejaVu Sans", "Trebuchet MS", Verdana, sans-serif;
